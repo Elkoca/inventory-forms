@@ -43,6 +43,7 @@ namespace inventory_forms
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DeleteProduct = new System.Windows.Forms.Button();
             this.LoadingGif = new System.Windows.Forms.PictureBox();
+            this.exceptionTextBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadingGif)).BeginInit();
@@ -146,6 +147,9 @@ namespace inventory_forms
             // 
             // LoadingGif
             // 
+            this.LoadingGif.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoadingGif.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LoadingGif.Image = ((System.Drawing.Image)(resources.GetObject("LoadingGif.Image")));
             this.LoadingGif.InitialImage = ((System.Drawing.Image)(resources.GetObject("LoadingGif.InitialImage")));
@@ -157,11 +161,27 @@ namespace inventory_forms
             this.LoadingGif.TabStop = false;
             this.LoadingGif.Visible = false;
             // 
+            // exceptionTextBox
+            // 
+            this.exceptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exceptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.exceptionTextBox.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.exceptionTextBox.ForeColor = System.Drawing.Color.Red;
+            this.exceptionTextBox.Location = new System.Drawing.Point(12, 189);
+            this.exceptionTextBox.Name = "exceptionTextBox";
+            this.exceptionTextBox.Size = new System.Drawing.Size(847, 158);
+            this.exceptionTextBox.TabIndex = 6;
+            this.exceptionTextBox.Text = "";
+            this.exceptionTextBox.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 498);
+            this.Controls.Add(this.exceptionTextBox);
             this.Controls.Add(this.LoadingGif);
             this.Controls.Add(this.DeleteProduct);
             this.Controls.Add(this.textBox1);
@@ -191,5 +211,6 @@ namespace inventory_forms
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private PictureBox LoadingGif;
+        private RichTextBox exceptionTextBox;
     }
 }

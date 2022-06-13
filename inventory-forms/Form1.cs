@@ -26,9 +26,21 @@ public partial class Form1 : Form
     {
         //ProductGridView.CellDoubleClick();
         ProductGridView.DataSource = null;
+        exceptionTextBox.Hide();
         LoadingGif.Show();
-        _products = await _client.ListProduct();
+        try
+        {
+            _products = await _client.ListProduct();
+            ProductGridView.DataSource = this._products;
+        }
+        catch (Exception ex)
+        {
+            //API error
+            exceptionTextBox.Text = $"Error: {ex.Message}";
+            exceptionTextBox.Show();
+        }
+
         LoadingGif.Hide();
-        ProductGridView.DataSource = this._products;
+
     }
 }
