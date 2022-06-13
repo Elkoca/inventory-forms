@@ -15,10 +15,10 @@ public class InventoryApiWrapper : IInventoryApiWrapper
     }
 
 
-    public async Task<Products?> ListProduct()
+    public async Task<List<Products?>?> ListProduct()
     {
         var request = new RestRequest("products");
-        var response = await _client.GetAsync<Products>(request);
+        var response = await _client.GetAsync<List<Products?>>(request);
         return response;
     }
     public async Task<Products?> GetProduct(int id)

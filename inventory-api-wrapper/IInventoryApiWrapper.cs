@@ -4,7 +4,7 @@ namespace inventory_api_wrapper;
 
 public interface IInventoryApiWrapper
 {
-    public Task<Products?> ListProduct();
+    public Task<List<Products?>?> ListProduct();
     public Task<Products?> GetProduct(int id);
     public Task<Products?> CreateProduct(Products newProduct);
     public Task<Products?> UpdateProduct(Products newProduct);
