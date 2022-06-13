@@ -31,7 +31,8 @@ namespace inventory_forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,30 +42,37 @@ namespace inventory_forms
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DeleteProduct = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.LoadingGif = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingGif)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // ProductGridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ProductGridView.AllowUserToAddRows = false;
+            this.ProductGridView.AllowUserToDeleteRows = false;
+            this.ProductGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductGridView.AutoGenerateColumns = false;
+            this.ProductGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ProductGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.ProductGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.titleDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.productsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 352);
-            this.dataGridView1.TabIndex = 1;
+            this.ProductGridView.DataSource = this.productsBindingSource;
+            this.ProductGridView.Location = new System.Drawing.Point(12, 59);
+            this.ProductGridView.Name = "ProductGridView";
+            this.ProductGridView.ReadOnly = true;
+            this.ProductGridView.RowTemplate.Height = 25;
+            this.ProductGridView.Size = new System.Drawing.Size(847, 400);
+            this.ProductGridView.TabIndex = 1;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -102,7 +110,7 @@ namespace inventory_forms
             // 
             this.ListProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ListProducts.AutoSize = true;
-            this.ListProducts.Location = new System.Drawing.Point(683, 12);
+            this.ListProducts.Location = new System.Drawing.Point(754, 12);
             this.ListProducts.Name = "ListProducts";
             this.ListProducts.Size = new System.Drawing.Size(105, 25);
             this.ListProducts.TabIndex = 0;
@@ -129,27 +137,42 @@ namespace inventory_forms
             // DeleteProduct
             // 
             this.DeleteProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProduct.Location = new System.Drawing.Point(693, 417);
+            this.DeleteProduct.Location = new System.Drawing.Point(764, 465);
             this.DeleteProduct.Name = "DeleteProduct";
             this.DeleteProduct.Size = new System.Drawing.Size(95, 23);
             this.DeleteProduct.TabIndex = 4;
             this.DeleteProduct.Text = "Delete";
             this.DeleteProduct.UseVisualStyleBackColor = true;
             // 
+            // LoadingGif
+            // 
+            this.LoadingGif.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.LoadingGif.Image = ((System.Drawing.Image)(resources.GetObject("LoadingGif.Image")));
+            this.LoadingGif.InitialImage = ((System.Drawing.Image)(resources.GetObject("LoadingGif.InitialImage")));
+            this.LoadingGif.Location = new System.Drawing.Point(303, 166);
+            this.LoadingGif.Name = "LoadingGif";
+            this.LoadingGif.Size = new System.Drawing.Size(232, 201);
+            this.LoadingGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LoadingGif.TabIndex = 5;
+            this.LoadingGif.TabStop = false;
+            this.LoadingGif.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(871, 498);
+            this.Controls.Add(this.LoadingGif);
             this.Controls.Add(this.DeleteProduct);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ProductGridView);
             this.Controls.Add(this.ListProducts);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingGif)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +181,7 @@ namespace inventory_forms
         #endregion
 
         private Button ListProducts;
-        private DataGridView dataGridView1;
+        private DataGridView ProductGridView;
         private Button button1;
         private TextBox textBox1;
         private BindingSource productsBindingSource;
@@ -167,5 +190,6 @@ namespace inventory_forms
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private PictureBox LoadingGif;
     }
 }

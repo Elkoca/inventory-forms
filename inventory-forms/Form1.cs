@@ -12,22 +12,23 @@ public partial class Form1 : Form
     public Form1()
     {
         _client = new InventoryApiWrapper();
+        InitializeComponent();
 
         this.RefreshProducts();
-        InitializeComponent();
     }
 
     private async void ListProducts_Click(object sender, EventArgs e)
     {
-        List<Products?>? products = await _client.ListProduct();
-        var productsBinding = new BindingList<Products>(products);
-
-        dataGridView1.DataSource = productsBinding;
+        await RefreshProducts();
     }
 
-    private async void RefreshProducts()
+    private async Task RefreshProducts()
     {
+        //ProductGridView.CellDoubleClick();
+        ProductGridView.DataSource = null;
+        LoadingGif.Show();
         _products = await _client.ListProduct();
-        dataGridView1.DataSource = this._products;
+        LoadingGif.Hide();
+        ProductGridView.DataSource = this._products;
     }
 }
