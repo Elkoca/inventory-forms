@@ -13,4 +13,8 @@
     <ProjectReference Include="..\inventory-api-wrapper\inventory-api-wrapper.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>

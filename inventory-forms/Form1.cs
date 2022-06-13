@@ -15,6 +15,7 @@ public partial class Form1 : Form
     private async void ListProducts_Click(object sender, EventArgs e)
     {
         List<Products?>? a = await _client.ListProduct();
-        //dataGridView1.DataSource = a;
+
+        dataGridView1.DataSource = a;
     }
 }
