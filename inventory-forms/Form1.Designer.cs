@@ -39,8 +39,8 @@ namespace inventory_forms
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ListProducts = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.DeleteProduct = new System.Windows.Forms.Button();
             this.LoadingGif = new System.Windows.Forms.PictureBox();
             this.exceptionTextBox = new System.Windows.Forms.RichTextBox();
@@ -119,21 +119,23 @@ namespace inventory_forms
             this.ListProducts.UseVisualStyleBackColor = true;
             this.ListProducts.Click += new System.EventHandler(this.ListProducts_Click);
             // 
-            // button1
+            // searchButton
             // 
-            this.button1.Location = new System.Drawing.Point(165, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.searchButton.Location = new System.Drawing.Point(165, 12);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(67, 23);
+            this.searchButton.TabIndex = 2;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 23);
-            this.textBox1.TabIndex = 3;
+            this.searchBox.Location = new System.Drawing.Point(12, 12);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(147, 23);
+            this.searchBox.TabIndex = 3;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // DeleteProduct
             // 
@@ -184,12 +186,13 @@ namespace inventory_forms
             this.Controls.Add(this.exceptionTextBox);
             this.Controls.Add(this.LoadingGif);
             this.Controls.Add(this.DeleteProduct);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.searchBox);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.ProductGridView);
             this.Controls.Add(this.ListProducts);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadingGif)).EndInit();
@@ -203,7 +206,7 @@ namespace inventory_forms
         private Button ListProducts;
         private DataGridView ProductGridView;
         private Button button1;
-        private TextBox textBox1;
+        private TextBox searchBox;
         private BindingSource productsBindingSource;
         private Button DeleteProduct;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -212,5 +215,6 @@ namespace inventory_forms
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private PictureBox LoadingGif;
         private RichTextBox exceptionTextBox;
+        private Button searchButton;
     }
 }
