@@ -8,6 +8,9 @@ namespace inventory_forms;
 
 public partial class Form1 : Form
 {
+    private DataGridViewColumn? _sortColumn;
+    private ListSortDirection? _sortOrder;
+
     private InventoryApiWrapper _client;
     private List<Products> _products;
 
@@ -19,6 +22,11 @@ public partial class Form1 : Form
         set 
         {
             ProductGridView.DataSource = value;
+            if(_sortColumn != null && _sortOrder != null)
+            {
+                ProductGridView.Sort(_sortColumn, (ListSortDirection)_sortOrder);
+            }
+
             _productList = value; 
         }
     }
@@ -77,11 +85,25 @@ public partial class Form1 : Form
     private void searchBox_TextChanged(object sender, EventArgs e)
     {
         //Regex regex = new Regex();
-        List<Products> filteredProducts = _products.Where(x =>
+        List <Products> filteredProducts = _products.Where(x =>
             Regex.IsMatch(x.Name, searchBox.Text.Trim(), RegexOptions.IgnoreCase) ||
             Regex.IsMatch(x.Id.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase)
         ).ToList();
 
         ProductList = new SortableBindingList<Products>(filteredProducts);
+    }
+
+    private void productGridView_SortedChange(object sender, EventArgs e)
+    {
+        //Kan bruke denne for å lagre sorteringa, selv om jeg endrer datagrunlaget ved søk
+        
+        _sortColumn = ProductGridView.SortedColumn;
+
+        _sortOrder = 
+            ProductGridView.SortOrder == SortOrder.Ascending ?  ListSortDirection.Ascending :
+            ProductGridView.SortOrder == SortOrder.Descending ? ListSortDirection.Descending : 
+            _sortOrder = null;
+
+        //ProductGridView.Sort(_sortColumn, _sortOrder);
     }
 }

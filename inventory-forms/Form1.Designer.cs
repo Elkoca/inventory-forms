@@ -74,6 +74,7 @@ namespace inventory_forms
             this.ProductGridView.RowTemplate.Height = 25;
             this.ProductGridView.Size = new System.Drawing.Size(847, 400);
             this.ProductGridView.TabIndex = 1;
+            this.ProductGridView.Sorted += new EventHandler(productGridView_SortedChange);
             // 
             // idDataGridViewTextBoxColumn
             // 
