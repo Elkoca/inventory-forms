@@ -33,12 +33,6 @@ namespace inventory_forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListForm));
             this.ProductGridView = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.articleNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.getProductResponseBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ListProducts = new System.Windows.Forms.Button();
@@ -51,6 +45,13 @@ namespace inventory_forms
             this.getPriceResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NewProductButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.articleNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editProductButton = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductResponseBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -69,7 +70,6 @@ namespace inventory_forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProductGridView.AutoGenerateColumns = false;
             this.ProductGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ProductGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.ProductGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -79,60 +79,20 @@ namespace inventory_forms
             this.descriptionDataGridViewTextBoxColumn,
             this.articleNoDataGridViewTextBoxColumn,
             this.stockDataGridViewTextBoxColumn,
-            this.createdDataGridViewTextBoxColumn});
+            this.createdDataGridViewTextBoxColumn,
+            this.editProductButton});
             this.ProductGridView.DataSource = this.getProductResponseBindingSource1;
             this.ProductGridView.Location = new System.Drawing.Point(-2, 35);
             this.ProductGridView.Name = "ProductGridView";
             this.ProductGridView.ReadOnly = true;
+            this.ProductGridView.RowHeadersVisible = false;
             this.ProductGridView.RowTemplate.Height = 25;
-            this.ProductGridView.Size = new System.Drawing.Size(694, 275);
+            this.ProductGridView.Size = new System.Drawing.Size(899, 434);
             this.ProductGridView.TabIndex = 1;
             this.ProductGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellContentClick);
             this.ProductGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductGridView_CellFormatting);
             this.ProductGridView.Sorted += new System.EventHandler(this.productGridView_SortedChange);
             this.ProductGridView.Click += new System.EventHandler(this.ProductGridView_Click);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // articleNoDataGridViewTextBoxColumn
-            // 
-            this.articleNoDataGridViewTextBoxColumn.DataPropertyName = "ArticleNo";
-            this.articleNoDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.articleNoDataGridViewTextBoxColumn.Name = "articleNoDataGridViewTextBoxColumn";
-            this.articleNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stockDataGridViewTextBoxColumn
-            // 
-            this.stockDataGridViewTextBoxColumn.DataPropertyName = "Stock";
-            this.stockDataGridViewTextBoxColumn.HeaderText = "Stock Count";
-            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
-            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdDataGridViewTextBoxColumn
-            // 
-            this.createdDataGridViewTextBoxColumn.DataPropertyName = "Created";
-            this.createdDataGridViewTextBoxColumn.HeaderText = "Release Date";
-            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
-            this.createdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // getProductResponseBindingSource1
             // 
@@ -146,7 +106,7 @@ namespace inventory_forms
             // 
             this.ListProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ListProducts.AutoSize = true;
-            this.ListProducts.Location = new System.Drawing.Point(582, 4);
+            this.ListProducts.Location = new System.Drawing.Point(787, 4);
             this.ListProducts.Name = "ListProducts";
             this.ListProducts.Size = new System.Drawing.Size(105, 25);
             this.ListProducts.TabIndex = 0;
@@ -176,7 +136,7 @@ namespace inventory_forms
             // DeleteProductButton
             // 
             this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProductButton.Location = new System.Drawing.Point(555, 359);
+            this.DeleteProductButton.Location = new System.Drawing.Point(760, 518);
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(151, 23);
             this.DeleteProductButton.TabIndex = 4;
@@ -190,7 +150,7 @@ namespace inventory_forms
             this.LoadingGif.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LoadingGif.Image = ((System.Drawing.Image)(resources.GetObject("LoadingGif.Image")));
             this.LoadingGif.InitialImage = ((System.Drawing.Image)(resources.GetObject("LoadingGif.InitialImage")));
-            this.LoadingGif.Location = new System.Drawing.Point(293, 143);
+            this.LoadingGif.Location = new System.Drawing.Point(395, 223);
             this.LoadingGif.MaximumSize = new System.Drawing.Size(150, 124);
             this.LoadingGif.MinimumSize = new System.Drawing.Size(75, 62);
             this.LoadingGif.Name = "LoadingGif";
@@ -205,7 +165,7 @@ namespace inventory_forms
             this.exceptionTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.exceptionTextBox.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exceptionTextBox.ForeColor = System.Drawing.Color.Red;
-            this.exceptionTextBox.Location = new System.Drawing.Point(95, 143);
+            this.exceptionTextBox.Location = new System.Drawing.Point(197, 223);
             this.exceptionTextBox.MaximumSize = new System.Drawing.Size(476, 96);
             this.exceptionTextBox.MinimumSize = new System.Drawing.Size(400, 62);
             this.exceptionTextBox.Name = "exceptionTextBox";
@@ -225,7 +185,7 @@ namespace inventory_forms
             // NewProductButton
             // 
             this.NewProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewProductButton.Location = new System.Drawing.Point(12, 359);
+            this.NewProductButton.Location = new System.Drawing.Point(12, 518);
             this.NewProductButton.Name = "NewProductButton";
             this.NewProductButton.Size = new System.Drawing.Size(163, 23);
             this.NewProductButton.TabIndex = 8;
@@ -249,14 +209,76 @@ namespace inventory_forms
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.MinimumSize = new System.Drawing.Size(500, 200);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(694, 341);
+            this.panel1.Size = new System.Drawing.Size(899, 500);
             this.panel1.TabIndex = 9;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.FillWeight = 75F;
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // articleNoDataGridViewTextBoxColumn
+            // 
+            this.articleNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.articleNoDataGridViewTextBoxColumn.DataPropertyName = "ArticleNo";
+            this.articleNoDataGridViewTextBoxColumn.FillWeight = 1F;
+            this.articleNoDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.articleNoDataGridViewTextBoxColumn.Name = "articleNoDataGridViewTextBoxColumn";
+            this.articleNoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.articleNoDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // stockDataGridViewTextBoxColumn
+            // 
+            this.stockDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.stockDataGridViewTextBoxColumn.DataPropertyName = "Stock";
+            this.stockDataGridViewTextBoxColumn.FillWeight = 1F;
+            this.stockDataGridViewTextBoxColumn.HeaderText = "Stock";
+            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
+            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stockDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // createdDataGridViewTextBoxColumn
+            // 
+            this.createdDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.createdDataGridViewTextBoxColumn.DataPropertyName = "Created";
+            this.createdDataGridViewTextBoxColumn.FillWeight = 1F;
+            this.createdDataGridViewTextBoxColumn.HeaderText = "Release Date";
+            this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
+            this.createdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // editProductButton
+            // 
+            this.editProductButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.editProductButton.FillWeight = 1F;
+            this.editProductButton.HeaderText = "Details/Edit";
+            this.editProductButton.Name = "editProductButton";
+            this.editProductButton.ReadOnly = true;
+            this.editProductButton.Width = 75;
             // 
             // ProductListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 394);
+            this.ClientSize = new System.Drawing.Size(923, 553);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.NewProductButton);
             this.Controls.Add(this.DeleteProductButton);
@@ -290,13 +312,14 @@ namespace inventory_forms
         private BindingSource getProductResponseBindingSource1;
         private BindingSource getProductResponseBindingSource;
         private BindingSource getPriceResponseBindingSource;
+        private Button NewProductButton;
+        private Panel panel1;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn articleNoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn createdDataGridViewTextBoxColumn;
-        private Button NewProductButton;
-        private Panel panel1;
+        private DataGridViewButtonColumn editProductButton;
     }
 }

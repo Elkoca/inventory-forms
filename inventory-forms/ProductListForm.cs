@@ -127,10 +127,19 @@ public partial class ProductListForm : Form
 
     private async void ProductGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-        //if (e.ColumnIndex == ProductGridView.Columns["actionButtonDataGridViewTextBoxColumn"].Index)
-        //{
-        //    //Do something with your button.
-        //}
+        
+
+        if (e.ColumnIndex == ProductGridView.Columns["editProductButton"].Index)
+        {
+            ProductGridView.ClearSelection();
+            //Do something with your button.
+        }
+        else
+        {
+            //ProductGridView.
+            //e.RowIndex
+
+        }
     }
 
     private async void ProductGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
