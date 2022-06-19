@@ -162,7 +162,7 @@ public partial class ProductListForm : Form
                 Myrow.Cells["availableGridViewTextBoxColumn"].Value = "True";
             }
             //Setter tekst på knappene
-            Myrow.Cells["editProductButton"].Value = "Details";
+            Myrow.Cells["editProductButton"].Value = "Select";
             //var a = Myrow.Cells.OfType<>(); editProductButton
         }
     }
@@ -170,6 +170,7 @@ public partial class ProductListForm : Form
     private async void NewProductButton_Click(object sender, EventArgs e)
     {
         //Open Nytt produkt vindu
+        //addProductTabPage.ena;
     }
 
     private async void DeleteProductButton_Click(object sender, EventArgs e)
