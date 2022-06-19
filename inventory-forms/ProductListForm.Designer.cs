@@ -44,7 +44,7 @@ namespace inventory_forms
             this.ListProducts = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.DeleteProduct = new System.Windows.Forms.Button();
+            this.DeleteProductButton = new System.Windows.Forms.Button();
             this.LoadingGif = new System.Windows.Forms.PictureBox();
             this.exceptionTextBox = new System.Windows.Forms.RichTextBox();
             this.getProductResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -85,7 +85,7 @@ namespace inventory_forms
             this.ProductGridView.Name = "ProductGridView";
             this.ProductGridView.ReadOnly = true;
             this.ProductGridView.RowTemplate.Height = 25;
-            this.ProductGridView.Size = new System.Drawing.Size(486, 142);
+            this.ProductGridView.Size = new System.Drawing.Size(694, 275);
             this.ProductGridView.TabIndex = 1;
             this.ProductGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellContentClick);
             this.ProductGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductGridView_CellFormatting);
@@ -146,7 +146,7 @@ namespace inventory_forms
             // 
             this.ListProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ListProducts.AutoSize = true;
-            this.ListProducts.Location = new System.Drawing.Point(401, 4);
+            this.ListProducts.Location = new System.Drawing.Point(582, 4);
             this.ListProducts.Name = "ListProducts";
             this.ListProducts.Size = new System.Drawing.Size(105, 25);
             this.ListProducts.TabIndex = 0;
@@ -156,7 +156,7 @@ namespace inventory_forms
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(156, 4);
+            this.searchButton.Location = new System.Drawing.Point(156, 6);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(67, 23);
             this.searchButton.TabIndex = 2;
@@ -166,21 +166,23 @@ namespace inventory_forms
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(3, 4);
+            this.searchBox.Location = new System.Drawing.Point(3, 6);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(147, 23);
             this.searchBox.TabIndex = 3;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBox_KeyPress);
             // 
-            // DeleteProduct
+            // DeleteProductButton
             // 
-            this.DeleteProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteProduct.Location = new System.Drawing.Point(181, 226);
-            this.DeleteProduct.Name = "DeleteProduct";
-            this.DeleteProduct.Size = new System.Drawing.Size(151, 23);
-            this.DeleteProduct.TabIndex = 4;
-            this.DeleteProduct.Text = "Delete selected product";
-            this.DeleteProduct.UseVisualStyleBackColor = true;
+            this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteProductButton.Location = new System.Drawing.Point(555, 359);
+            this.DeleteProductButton.Name = "DeleteProductButton";
+            this.DeleteProductButton.Size = new System.Drawing.Size(151, 23);
+            this.DeleteProductButton.TabIndex = 4;
+            this.DeleteProductButton.Text = "Delete selected product";
+            this.DeleteProductButton.UseVisualStyleBackColor = true;
+            this.DeleteProductButton.Click += new System.EventHandler(this.DeleteProductButton_Click);
             // 
             // LoadingGif
             // 
@@ -188,7 +190,7 @@ namespace inventory_forms
             this.LoadingGif.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LoadingGif.Image = ((System.Drawing.Image)(resources.GetObject("LoadingGif.Image")));
             this.LoadingGif.InitialImage = ((System.Drawing.Image)(resources.GetObject("LoadingGif.InitialImage")));
-            this.LoadingGif.Location = new System.Drawing.Point(201, 77);
+            this.LoadingGif.Location = new System.Drawing.Point(293, 143);
             this.LoadingGif.MaximumSize = new System.Drawing.Size(150, 124);
             this.LoadingGif.MinimumSize = new System.Drawing.Size(75, 62);
             this.LoadingGif.Name = "LoadingGif";
@@ -197,14 +199,13 @@ namespace inventory_forms
             this.LoadingGif.TabIndex = 5;
             this.LoadingGif.TabStop = false;
             this.LoadingGif.Visible = false;
-            this.LoadingGif.Click += new System.EventHandler(this.LoadingGif_Click);
             // 
             // exceptionTextBox
             // 
             this.exceptionTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.exceptionTextBox.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exceptionTextBox.ForeColor = System.Drawing.Color.Red;
-            this.exceptionTextBox.Location = new System.Drawing.Point(3, 77);
+            this.exceptionTextBox.Location = new System.Drawing.Point(95, 143);
             this.exceptionTextBox.MaximumSize = new System.Drawing.Size(476, 96);
             this.exceptionTextBox.MinimumSize = new System.Drawing.Size(400, 62);
             this.exceptionTextBox.Name = "exceptionTextBox";
@@ -224,7 +225,7 @@ namespace inventory_forms
             // NewProductButton
             // 
             this.NewProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewProductButton.Location = new System.Drawing.Point(12, 226);
+            this.NewProductButton.Location = new System.Drawing.Point(12, 359);
             this.NewProductButton.Name = "NewProductButton";
             this.NewProductButton.Size = new System.Drawing.Size(163, 23);
             this.NewProductButton.TabIndex = 8;
@@ -248,18 +249,17 @@ namespace inventory_forms
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.MinimumSize = new System.Drawing.Size(500, 200);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(510, 208);
+            this.panel1.Size = new System.Drawing.Size(694, 341);
             this.panel1.TabIndex = 9;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // ProductListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 261);
+            this.ClientSize = new System.Drawing.Size(718, 394);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.NewProductButton);
-            this.Controls.Add(this.DeleteProduct);
+            this.Controls.Add(this.DeleteProductButton);
             this.MinimumSize = new System.Drawing.Size(550, 300);
             this.Name = "ProductListForm";
             this.Text = "Form1";
@@ -283,7 +283,7 @@ namespace inventory_forms
         private Button button1;
         private TextBox searchBox;
         private BindingSource productsBindingSource;
-        private Button DeleteProduct;
+        private Button DeleteProductButton;
         private PictureBox LoadingGif;
         private RichTextBox exceptionTextBox;
         private Button searchButton;
