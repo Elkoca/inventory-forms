@@ -15,39 +15,36 @@ public class InventoryApiWrapper : IInventoryApiWrapper
     }
 
 
-    public async Task<List<Products?>?> ListProduct()
+    public async Task<GetProductListResponse?> ListProduct()
     {
         var request = new RestRequest("products");
-        var response = await _client.GetAsync<List<Products?>>(request);
+        var response = await _client.GetAsync<GetProductListResponse>(request);
         return response;
     }
-    public async Task<Products?> GetProduct(int id)
+    public async Task<GetProductResponse?> GetProduct(Guid productId)
     {
-        var request = new RestRequest($"products/{id}");
-        var response = await _client.GetAsync<Products>(request);
+        var request = new RestRequest($"products/{productId}");
+        var response = await _client.GetAsync<GetProductResponse>(request);
         return response;
     }
 
-    public async Task<Products?> CreateProduct(Products newProduct)
+    public async Task<GetProductResponse?> CreateProduct(PostProductBody newProduct)
     {
         var request = new RestRequest("products");
-        request.AddJsonBody<Products>(newProduct);
-        var response = await _client.PostAsync<Products>(request);
+        request.AddJsonBody(newProduct);
+        var response = await _client.PostAsync<GetProductResponse>(request);
         return response;
     }
 
-    public async Task<Products?> UpdateProduct(Products newProduct)
+    public async Task UpdateProduct(PutProductBody replaceProduct)
     {
-        var request = new RestRequest($"products/{newProduct.Id}");
-        request.AddJsonBody<Products>(newProduct);
-        var response = await _client.PutAsync<Products>(request);
-        return response;
+        var request = new RestRequest($"products/{replaceProduct.ProductId}");
+        request.AddJsonBody(replaceProduct);
+        await _client.PutAsync(request);
     }
-    public async Task DeleteProduct(int id)
+    public async Task DeleteProduct(Guid productId)
     {
-        var request = new RestRequest($"products/{id}");
-        var response = await _client.DeleteAsync(request);
-        //return response.ResponseStatus;
-        //throw new NotImplementedException();
+        var request = new RestRequest($"products/{productId}");
+        await _client.DeleteAsync(request);
     }
 }

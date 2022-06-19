@@ -1,12 +1,13 @@
-﻿using inventory_api_wrapper.Models;
+﻿using inventory_api_wrapper.Dto;
+using inventory_api_wrapper.Models;
 
 namespace inventory_api_wrapper;
 
 public interface IInventoryApiWrapper
 {
-    public Task<List<Products?>?> ListProduct();
-    public Task<Products?> GetProduct(int id);
-    public Task<Products?> CreateProduct(Products newProduct);
-    public Task<Products?> UpdateProduct(Products newProduct);
-    public Task DeleteProduct(int id);
+    public Task<GetProductListResponse?> ListProduct();
+    public Task<GetProductResponse?> GetProduct(Guid productId);
+    public Task<GetProductResponse?> CreateProduct(PostProductBody newProduct);
+    public Task UpdateProduct(PutProductBody replaceProduct);
+    public Task DeleteProduct(Guid productId);
 }
