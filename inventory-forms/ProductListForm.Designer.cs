@@ -2,7 +2,7 @@
 
 namespace inventory_forms
 {
-    partial class Form1
+    partial class ProductListForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,7 +31,7 @@ namespace inventory_forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListForm));
             this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +87,7 @@ namespace inventory_forms
             this.ProductGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellContentClick);
             this.ProductGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductGridView_CellFormatting);
             this.ProductGridView.Sorted += new System.EventHandler(this.productGridView_SortedChange);
+            this.ProductGridView.Click += new System.EventHandler(this.ProductGridView_Click);
             // 
             // nameDataGridViewTextBoxColumn
             // 

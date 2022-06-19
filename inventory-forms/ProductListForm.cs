@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace inventory_forms;
 
-public partial class Form1 : Form
+public partial class ProductListForm : Form
 {
     private DataGridViewColumn? _sortColumn;
     private ListSortDirection? _sortOrder;
@@ -35,8 +35,9 @@ public partial class Form1 : Form
         }
     }
 
-    public Form1()
+    public ProductListForm()
     {
+
         InitializeComponent();
     }
 
@@ -44,8 +45,9 @@ public partial class Form1 : Form
     {
         _client = new InventoryApiWrapper();
         await this.RefreshProducts();
-        var gridFrom = new AdvancedGrid(_products);
-        gridFrom.Show();
+
+        //var gridFrom = new AdvancedGrid(_products);
+        //gridFrom.Show();
     }
 
     private async void ListProducts_Click(object sender, EventArgs e)
@@ -73,6 +75,15 @@ public partial class Form1 : Form
             //API error
             exceptionTextBox.Text = $"Error: {ex.Message}";
             exceptionTextBox.Show();
+        }
+        //add button
+        DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
+        uninstallButtonColumn.Name = "actionButtonDataGridViewTextBoxColumn";
+        uninstallButtonColumn.HeaderText = "Details";
+        int columnIndex = 6;
+        if (ProductGridView.Columns["actionButtonDataGridViewTextBoxColumn"] == null)
+        {
+            ProductGridView.Columns.Insert(columnIndex, uninstallButtonColumn);
         }
 
         LoadingGif.Hide();
@@ -118,16 +129,42 @@ public partial class Form1 : Form
     private void ProductGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
 
+        e.
+        if (e.ColumnIndex == ProductGridView.Columns["actionButtonDataGridViewTextBoxColumn"].Index)
+        {
+            //Do something with your button.
+        }
     }
 
     private void ProductGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
-        //foreach (DataGridViewRow Myrow in ProductGridView.Rows)
-        //{            //Here 2 cell is target value and 1 cell is Volume
-        //    if (Convert.ToInt32(Myrow.Cells[4].Value) == 0)// Or your condition 
-        //    {
-        //        Myrow.DefaultCellStyle.BackColor = Color.Red;
-        //    }
-        //}
+        foreach (DataGridViewRow Myrow in ProductGridView.Rows)
+        {            //Here 2 cell is target value and 1 cell is Volume
+            if (Convert.ToInt32(Myrow.Cells[4].Value) == 0)// Or your condition 
+            {
+                Myrow.DefaultCellStyle.BackColor = Color.Red;
+            }
+        }
+    }
+
+    private void ProductGridView_Click(object sender, EventArgs e)
+    {
+        Int32 selectedColumnCount = ProductGridView.Columns
+            .GetColumnCount(DataGridViewElementStates.Selected);
+        if (selectedColumnCount > 0)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            for (int i = 0; i < selectedColumnCount; i++)
+            {
+                sb.Append("Column: ");
+                sb.Append(ProductGridView.SelectedColumns[i].Index
+                    .ToString());
+                sb.Append(Environment.NewLine);
+            }
+
+            sb.Append("Total: " + selectedColumnCount.ToString());
+            MessageBox.Show(sb.ToString(), "Selected Columns");
+        }
     }
 }
