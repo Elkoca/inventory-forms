@@ -105,12 +105,10 @@ public partial class ProductListForm : Form
 
         ProductList = new SortableBindingList<GetProductResponse>(filteredProducts);
     }
-
     private async void searchBox_TextChanged(object sender, EventArgs e)
     {
         //Usikker på om api update realtime vil fungere så bra, Kanskje om jeg skrur ned limiten??
     }
-
     private async void productGridView_SortedChange(object sender, EventArgs e)
     {
         //Kan bruke denne for å lagre sorteringa, selv om jeg endrer datagrunlaget ved søk
@@ -125,67 +123,75 @@ public partial class ProductListForm : Form
         //ProductGridView.Sort(_sortColumn, _sortOrder);
     }
 
+
+
     private async void ProductGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-        
-
-        if (e.ColumnIndex == ProductGridView.Columns["editProductButton"].Index)
+        if (e.RowIndex > -1)
         {
-            ProductGridView.ClearSelection();
-            //Do something with your button.
+            if (e.ColumnIndex == ProductGridView.Columns["editProductButton"].Index)
+                ProductGridView_CellDoubleClick(sender, e);
         }
-        else
-        {
-            //ProductGridView.
-            //e.RowIndex
+    }
 
+    private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex > -1)
+        {
+            var thisRow = ProductGridView.Rows[e.RowIndex];
+            if (thisRow.DataBoundItem is GetProductResponse selectedProduct)
+            {
+                Guid ProductId = selectedProduct.ProductId;
+                //Open edit window
+            }
         }
     }
 
     private async void ProductGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
         foreach (DataGridViewRow Myrow in ProductGridView.Rows)
-        {            //Here 2 cell is target value and 1 cell is Volume
-            if (Convert.ToInt32(Myrow.Cells[4].Value) == 0)// Or your condition 
+        {
+            //Gjør om de med stock == 0 til rød
+            if (Convert.ToInt32(Myrow.Cells[4].Value) == 0) 
             {
                 Myrow.DefaultCellStyle.BackColor = Color.Red;
             }
-        }
-    }
-
-    private async void ProductGridView_Click(object sender, EventArgs e)
-    {
-        Int32 selectedColumnCount = ProductGridView.Columns
-            .GetColumnCount(DataGridViewElementStates.Selected);
-        if (selectedColumnCount > 0)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-            for (int i = 0; i < selectedColumnCount; i++)
-            {
-                sb.Append("Column: ");
-                sb.Append(ProductGridView.SelectedColumns[i].Index
-                    .ToString());
-                sb.Append(Environment.NewLine);
-            }
-
-            sb.Append("Total: " + selectedColumnCount.ToString());
-            MessageBox.Show(sb.ToString(), "Selected Columns");
+            //Setter tekst på knappene
+            Myrow.Cells["editProductButton"].Value = "Details";
+            //var a = Myrow.Cells.OfType<>(); editProductButton
         }
     }
 
     private async void NewProductButton_Click(object sender, EventArgs e)
     {
-
-    }
-
-    private async void ChangeProductButton_Click(object sender, EventArgs e)
-    {
-
+        //Open Nytt produkt vindu
     }
 
     private async void DeleteProductButton_Click(object sender, EventArgs e)
     {
+        //Legge til Are you sure you want to delete this row
 
+        var Selectedrow = ProductGridView.SelectedRows;
+        if(Selectedrow.Count != 1)
+        {
+            //må endre denne til en bedre errormelding
+            throw new Exception("no Selected Rows");
+        }
+        else
+        {
+            var thisRow = Selectedrow[0];
+            if (thisRow.DataBoundItem is GetProductResponse selectedProduct)
+            {
+                Guid ProductId = selectedProduct.ProductId;
+                //Delete denne
+                //Melding om at produktet er slettet
+                //refresh data
+            }
+        }
     }
+
+
+
+
+
 }
