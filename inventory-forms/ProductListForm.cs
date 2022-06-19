@@ -136,7 +136,7 @@ public partial class ProductListForm : Form
         }
     }
 
-    private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    private async void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex > -1)
         {
@@ -145,7 +145,7 @@ public partial class ProductListForm : Form
             {
                 Guid ProductId = selectedProduct.ProductId;
                 //Open edit window
-                NewProductDetailAddProductTab(ProductId);
+                await NewProductDetailAddProductTab(ProductId);
             }
         }
     }
@@ -172,7 +172,7 @@ public partial class ProductListForm : Form
 
     private async void NewProductButton_Click(object sender, EventArgs e)
     {
-        NewAddProductTab();
+        await NewAddProductTab();
     }
 
     private async void DeleteProductButton_Click(object sender, EventArgs e)
@@ -193,6 +193,7 @@ public partial class ProductListForm : Form
             if (thisRow.DataBoundItem is GetProductResponse selectedProduct)
             {
                 Guid ProductId = selectedProduct.ProductId;
+                await DeleteProduct(ProductId);
                 //Delete denne
                 //Melding om at produktet er slettet
                 //refresh data
@@ -202,22 +203,7 @@ public partial class ProductListForm : Form
 
 
     //Tabs
-    private async void NewAddProductTab()
-    {
-        //Open Nytt produkt vindu
-        //Her må jeg også ha en logikk som resetter Verdiene i addPorudctTabPage 
-        if (ProductTabControl.TabPages.Contains(addProductTabPage))
-        {
-            //Denne bør kanskje ikke resette verdiene, om man klarer å trykke feil, men da bør jeg ha 
-            ProductTabControl.SelectedTab = addProductTabPage;
-        }
-        else
-        {
-            addProductTabPage.Show();
-            ProductTabControl.TabPages.Add(addProductTabPage);
-        }
-    }
-    private async void NewChangeProductTab()
+    private async Task NewAddProductTab()
     {
         //Open Nytt produkt vindu
         //Her må jeg også ha en logikk som resetter Verdiene i addPorudctTabPage 
@@ -233,7 +219,7 @@ public partial class ProductListForm : Form
         }
     }
     // Gjelder også for change product (Edit button på sida)
-    private async void NewProductDetailAddProductTab(Guid productId)
+    private async Task NewProductDetailAddProductTab(Guid productId)
     {
 
         try
@@ -272,7 +258,7 @@ public partial class ProductListForm : Form
         //Fjern add knapp
 
     }
-    private async void EditProductDetails()
+    private async Task EditProductDetails()
     {
         var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
         ProductTabControl.TabPages[indexOfDetails].Text = "Edit product";
@@ -292,6 +278,12 @@ public partial class ProductListForm : Form
         //Legg til add knapp
     }
 
+    private async Task DeleteProduct(Guid ProductId)
+    {
+        await _client.DeleteProduct(ProductId);
+        //Successfully deleted popup
+        await RefreshProducts();
+    }
 
 
 }
