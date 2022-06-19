@@ -128,8 +128,6 @@ public partial class ProductListForm : Form
 
     private void ProductGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-
-        e.
         if (e.ColumnIndex == ProductGridView.Columns["actionButtonDataGridViewTextBoxColumn"].Index)
         {
             //Do something with your button.
@@ -166,5 +164,25 @@ public partial class ProductListForm : Form
             sb.Append("Total: " + selectedColumnCount.ToString());
             MessageBox.Show(sb.ToString(), "Selected Columns");
         }
+    }
+
+    private void panel1_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
+
+    private void panel1_Paint_1(object sender, PaintEventArgs e)
+    {
+
+    }
+
+    private void LoadingGif_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void NewProductButton_Click(object sender, EventArgs e)
+    {
+
     }
 }
