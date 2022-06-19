@@ -46,8 +46,8 @@ namespace inventory_forms
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.articleNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductResponseBindingSource1)).BeginInit();
@@ -74,8 +74,8 @@ namespace inventory_forms
             this.nameDataGridViewTextBoxColumn,
             this.titleDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
-            this.stockDataGridViewTextBoxColumn,
             this.articleNoDataGridViewTextBoxColumn,
+            this.stockDataGridViewTextBoxColumn,
             this.createdDataGridViewTextBoxColumn});
             this.ProductGridView.DataSource = this.getProductResponseBindingSource1;
             this.ProductGridView.Location = new System.Drawing.Point(12, 59);
@@ -194,24 +194,24 @@ namespace inventory_forms
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // stockDataGridViewTextBoxColumn
-            // 
-            this.stockDataGridViewTextBoxColumn.DataPropertyName = "Stock";
-            this.stockDataGridViewTextBoxColumn.HeaderText = "Stock";
-            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
-            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // articleNoDataGridViewTextBoxColumn
             // 
             this.articleNoDataGridViewTextBoxColumn.DataPropertyName = "ArticleNo";
-            this.articleNoDataGridViewTextBoxColumn.HeaderText = "ArticleNo";
+            this.articleNoDataGridViewTextBoxColumn.HeaderText = "Barcode";
             this.articleNoDataGridViewTextBoxColumn.Name = "articleNoDataGridViewTextBoxColumn";
             this.articleNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stockDataGridViewTextBoxColumn
+            // 
+            this.stockDataGridViewTextBoxColumn.DataPropertyName = "Stock";
+            this.stockDataGridViewTextBoxColumn.HeaderText = "Stock Count";
+            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
+            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // createdDataGridViewTextBoxColumn
             // 
             this.createdDataGridViewTextBoxColumn.DataPropertyName = "Created";
-            this.createdDataGridViewTextBoxColumn.HeaderText = "Created";
+            this.createdDataGridViewTextBoxColumn.HeaderText = "Release Date";
             this.createdDataGridViewTextBoxColumn.Name = "createdDataGridViewTextBoxColumn";
             this.createdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -258,8 +258,8 @@ namespace inventory_forms
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn articleNoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn createdDataGridViewTextBoxColumn;
     }
 }
