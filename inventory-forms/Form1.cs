@@ -114,4 +114,20 @@ public partial class Form1 : Form
 
         //ProductGridView.Sort(_sortColumn, _sortOrder);
     }
+
+    private void ProductGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+    }
+
+    private void ProductGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        //foreach (DataGridViewRow Myrow in ProductGridView.Rows)
+        //{            //Here 2 cell is target value and 1 cell is Volume
+        //    if (Convert.ToInt32(Myrow.Cells[4].Value) == 0)// Or your condition 
+        //    {
+        //        Myrow.DefaultCellStyle.BackColor = Color.Red;
+        //    }
+        //}
+    }
 }

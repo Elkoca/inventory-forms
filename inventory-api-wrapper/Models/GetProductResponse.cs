@@ -8,7 +8,7 @@ public record GetProductResponse
     public string? Title { get; init; }
     public string? Description { get; init; }
     public int Stock { get; init; }
-    public int? ArticleNo { get; init; }
+    public int ArticleNo { get; init; }
     public GetPriceResponse? Price { get; init; }
     public Guid? ProductTypeId { get; init; }
     public GetProductTypeResponse? ProductType { get; set; }
