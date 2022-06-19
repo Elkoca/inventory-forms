@@ -31,7 +31,7 @@ namespace inventory_forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListForm));
             this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.nameDQataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,12 +60,12 @@ namespace inventory_forms
             this.ProductTabControl = new System.Windows.Forms.TabControl();
             this.productsTabPage1 = new System.Windows.Forms.TabPage();
             this.productDetailsTabPage = new System.Windows.Forms.TabPage();
-            this.addProductTabPage = new System.Windows.Forms.TabPage();
-            this.editProductDetailsButton = new System.Windows.Forms.Button();
-            this.cancelProductDetailsButton = new System.Windows.Forms.Button();
             this.saveProductDetailsButton = new System.Windows.Forms.Button();
-            this.CancelAddProductButton = new System.Windows.Forms.Button();
+            this.cancelProductDetailsButton = new System.Windows.Forms.Button();
+            this.editProductDetailsButton = new System.Windows.Forms.Button();
+            this.addProductTabPage = new System.Windows.Forms.TabPage();
             this.addNewProductDetailsButton = new System.Windows.Forms.Button();
+            this.CancelAddProductButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductResponseBindingSource1)).BeginInit();
@@ -91,14 +91,14 @@ namespace inventory_forms
             this.ProductGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ProductGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDQataGridViewTextBoxColumn,
@@ -117,7 +117,7 @@ namespace inventory_forms
             this.ProductGridView.RowHeadersVisible = false;
             this.ProductGridView.RowTemplate.Height = 25;
             this.ProductGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductGridView.Size = new System.Drawing.Size(605, 337);
+            this.ProductGridView.Size = new System.Drawing.Size(693, 414);
             this.ProductGridView.TabIndex = 1;
             this.ProductGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellContentClick);
             this.ProductGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellDoubleClick);
@@ -207,7 +207,7 @@ namespace inventory_forms
             // 
             this.ListProducts.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ListProducts.AutoSize = true;
-            this.ListProducts.Location = new System.Drawing.Point(246, 376);
+            this.ListProducts.Location = new System.Drawing.Point(290, 453);
             this.ListProducts.Name = "ListProducts";
             this.ListProducts.Size = new System.Drawing.Size(105, 25);
             this.ListProducts.TabIndex = 0;
@@ -218,7 +218,7 @@ namespace inventory_forms
             // searchButton
             // 
             this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchButton.Location = new System.Drawing.Point(531, 4);
+            this.searchButton.Location = new System.Drawing.Point(619, 4);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(67, 23);
             this.searchButton.TabIndex = 2;
@@ -229,7 +229,7 @@ namespace inventory_forms
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(378, 4);
+            this.searchBox.Location = new System.Drawing.Point(466, 4);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(147, 23);
             this.searchBox.TabIndex = 3;
@@ -239,7 +239,7 @@ namespace inventory_forms
             // DeleteProductButton
             // 
             this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProductButton.Location = new System.Drawing.Point(447, 377);
+            this.DeleteProductButton.Location = new System.Drawing.Point(535, 454);
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(151, 23);
             this.DeleteProductButton.TabIndex = 4;
@@ -253,7 +253,7 @@ namespace inventory_forms
             this.LoadingGif.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LoadingGif.Image = ((System.Drawing.Image)(resources.GetObject("LoadingGif.Image")));
             this.LoadingGif.InitialImage = ((System.Drawing.Image)(resources.GetObject("LoadingGif.InitialImage")));
-            this.LoadingGif.Location = new System.Drawing.Point(248, 163);
+            this.LoadingGif.Location = new System.Drawing.Point(292, 202);
             this.LoadingGif.MaximumSize = new System.Drawing.Size(150, 124);
             this.LoadingGif.MinimumSize = new System.Drawing.Size(75, 62);
             this.LoadingGif.Name = "LoadingGif";
@@ -268,7 +268,7 @@ namespace inventory_forms
             this.exceptionTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.exceptionTextBox.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exceptionTextBox.ForeColor = System.Drawing.Color.Red;
-            this.exceptionTextBox.Location = new System.Drawing.Point(62, 163);
+            this.exceptionTextBox.Location = new System.Drawing.Point(106, 202);
             this.exceptionTextBox.MaximumSize = new System.Drawing.Size(476, 96);
             this.exceptionTextBox.MinimumSize = new System.Drawing.Size(400, 62);
             this.exceptionTextBox.Name = "exceptionTextBox";
@@ -288,7 +288,7 @@ namespace inventory_forms
             // NewProductButton
             // 
             this.NewProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewProductButton.Location = new System.Drawing.Point(3, 377);
+            this.NewProductButton.Location = new System.Drawing.Point(3, 454);
             this.NewProductButton.Name = "NewProductButton";
             this.NewProductButton.Size = new System.Drawing.Size(163, 23);
             this.NewProductButton.TabIndex = 8;
@@ -315,7 +315,7 @@ namespace inventory_forms
             this.productListPanel.Location = new System.Drawing.Point(3, 3);
             this.productListPanel.MinimumSize = new System.Drawing.Size(500, 200);
             this.productListPanel.Name = "productListPanel";
-            this.productListPanel.Size = new System.Drawing.Size(605, 407);
+            this.productListPanel.Size = new System.Drawing.Size(693, 484);
             this.productListPanel.TabIndex = 9;
             // 
             // label1
@@ -362,7 +362,7 @@ namespace inventory_forms
             this.productsTabPage1.Location = new System.Drawing.Point(4, 24);
             this.productsTabPage1.Name = "productsTabPage1";
             this.productsTabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.productsTabPage1.Size = new System.Drawing.Size(611, 413);
+            this.productsTabPage1.Size = new System.Drawing.Size(699, 490);
             this.productsTabPage1.TabIndex = 0;
             this.productsTabPage1.Text = "Stock list";
             // 
@@ -378,26 +378,16 @@ namespace inventory_forms
             this.productDetailsTabPage.TabIndex = 1;
             this.productDetailsTabPage.Text = "Product details";
             // 
-            // addProductTabPage
+            // saveProductDetailsButton
             // 
-            this.addProductTabPage.Controls.Add(this.addNewProductDetailsButton);
-            this.addProductTabPage.Controls.Add(this.CancelAddProductButton);
-            this.addProductTabPage.Location = new System.Drawing.Point(4, 24);
-            this.addProductTabPage.Name = "addProductTabPage";
-            this.addProductTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.addProductTabPage.Size = new System.Drawing.Size(611, 413);
-            this.addProductTabPage.TabIndex = 2;
-            this.addProductTabPage.Text = "Add Product";
-            // 
-            // editProductDetailsButton
-            // 
-            this.editProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editProductDetailsButton.Location = new System.Drawing.Point(618, 6);
-            this.editProductDetailsButton.Name = "editProductDetailsButton";
-            this.editProductDetailsButton.Size = new System.Drawing.Size(75, 23);
-            this.editProductDetailsButton.TabIndex = 0;
-            this.editProductDetailsButton.Text = "Edit";
-            this.editProductDetailsButton.UseVisualStyleBackColor = true;
+            this.saveProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveProductDetailsButton.Location = new System.Drawing.Point(618, 461);
+            this.saveProductDetailsButton.Name = "saveProductDetailsButton";
+            this.saveProductDetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.saveProductDetailsButton.TabIndex = 2;
+            this.saveProductDetailsButton.Text = "Save";
+            this.saveProductDetailsButton.UseVisualStyleBackColor = true;
+            this.saveProductDetailsButton.Click += new System.EventHandler(this.saveProductDetailsButton_Click);
             // 
             // cancelProductDetailsButton
             // 
@@ -408,36 +398,51 @@ namespace inventory_forms
             this.cancelProductDetailsButton.TabIndex = 1;
             this.cancelProductDetailsButton.Text = "Cancel";
             this.cancelProductDetailsButton.UseVisualStyleBackColor = true;
+            this.cancelProductDetailsButton.Click += new System.EventHandler(this.cancelProductDetailsButton_Click);
             // 
-            // saveProductDetailsButton
+            // editProductDetailsButton
             // 
-            this.saveProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveProductDetailsButton.Location = new System.Drawing.Point(618, 461);
-            this.saveProductDetailsButton.Name = "saveProductDetailsButton";
-            this.saveProductDetailsButton.Size = new System.Drawing.Size(75, 23);
-            this.saveProductDetailsButton.TabIndex = 2;
-            this.saveProductDetailsButton.Text = "Save";
-            this.saveProductDetailsButton.UseVisualStyleBackColor = true;
+            this.editProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editProductDetailsButton.Location = new System.Drawing.Point(618, 6);
+            this.editProductDetailsButton.Name = "editProductDetailsButton";
+            this.editProductDetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.editProductDetailsButton.TabIndex = 0;
+            this.editProductDetailsButton.Text = "Edit";
+            this.editProductDetailsButton.UseVisualStyleBackColor = true;
+            this.editProductDetailsButton.Click += new System.EventHandler(this.editProductDetailsButton_Click);
             // 
-            // CancelAddProductButton
+            // addProductTabPage
             // 
-            this.CancelAddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CancelAddProductButton.Location = new System.Drawing.Point(6, 384);
-            this.CancelAddProductButton.Name = "CancelAddProductButton";
-            this.CancelAddProductButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelAddProductButton.TabIndex = 2;
-            this.CancelAddProductButton.Text = "Cancel";
-            this.CancelAddProductButton.UseVisualStyleBackColor = true;
+            this.addProductTabPage.Controls.Add(this.addNewProductDetailsButton);
+            this.addProductTabPage.Controls.Add(this.CancelAddProductButton);
+            this.addProductTabPage.Location = new System.Drawing.Point(4, 24);
+            this.addProductTabPage.Name = "addProductTabPage";
+            this.addProductTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.addProductTabPage.Size = new System.Drawing.Size(699, 490);
+            this.addProductTabPage.TabIndex = 2;
+            this.addProductTabPage.Text = "Add Product";
             // 
             // addNewProductDetailsButton
             // 
-            this.addNewProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addNewProductDetailsButton.Location = new System.Drawing.Point(530, 384);
+            this.addNewProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addNewProductDetailsButton.Location = new System.Drawing.Point(618, 461);
             this.addNewProductDetailsButton.Name = "addNewProductDetailsButton";
             this.addNewProductDetailsButton.Size = new System.Drawing.Size(75, 23);
             this.addNewProductDetailsButton.TabIndex = 3;
             this.addNewProductDetailsButton.Text = "Add";
             this.addNewProductDetailsButton.UseVisualStyleBackColor = true;
+            this.addNewProductDetailsButton.Click += new System.EventHandler(this.addNewProductDetailsButton_Click);
+            // 
+            // CancelAddProductButton
+            // 
+            this.CancelAddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CancelAddProductButton.Location = new System.Drawing.Point(6, 461);
+            this.CancelAddProductButton.Name = "CancelAddProductButton";
+            this.CancelAddProductButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelAddProductButton.TabIndex = 2;
+            this.CancelAddProductButton.Text = "Cancel";
+            this.CancelAddProductButton.UseVisualStyleBackColor = true;
+            this.CancelAddProductButton.Click += new System.EventHandler(this.CancelAddProductButton_Click);
             // 
             // contextMenuStrip1
             // 

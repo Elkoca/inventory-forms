@@ -61,35 +61,11 @@ public partial class ProductListForm : Form
         //var gridFrom = new AdvancedGrid(_products);
         //gridFrom.Show();
     }
-
+    #region events
     private async void ListProducts_Click(object sender, EventArgs e)
     {
         await RefreshProducts();
     }
-
-    private async Task RefreshProducts()
-    {
-
-        ProductGridView.DataSource = null;
-        exceptionTextBox.Hide();
-        LoadingGif.Show();
-
-        try
-        {
-            _productListResponse = await _client.ListProduct();
-            ProductList = new SortableBindingList<GetProductResponse>(_productListResponse.Items);
-        }
-        catch (Exception ex)
-        {
-            //API error
-            exceptionTextBox.Text = $"Error: {ex.Message}";
-            exceptionTextBox.Show();
-        }
-
-        LoadingGif.Hide();
-
-    }
-
     private async void searchBox_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (e.KeyChar == (char)Keys.Return)
@@ -124,8 +100,6 @@ public partial class ProductListForm : Form
 
         //ProductGridView.Sort(_sortColumn, _sortOrder);
     }
-
-
 
     private async void ProductGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
@@ -193,7 +167,9 @@ public partial class ProductListForm : Form
             if (thisRow.DataBoundItem is GetProductResponse selectedProduct)
             {
                 Guid ProductId = selectedProduct.ProductId;
-                await DeleteProduct(ProductId);
+                await _client.DeleteProduct(ProductId);
+                //Successfully deleted popup
+                await RefreshProducts();
                 //Delete denne
                 //Melding om at produktet er slettet
                 //refresh data
@@ -201,7 +177,65 @@ public partial class ProductListForm : Form
         }
     }
 
+    private async void saveProductDetailsButton_Click(object sender, EventArgs e)
+    {
+        //Lage et ChangedProduct object
+        //_client.ChangeProduct(changedProduct);
+        //popup om sucessfully saved
+        await RefreshProducts();
+        productDetailsTabPage.Hide();
+        ProductTabControl.TabPages.Remove(productDetailsTabPage);
 
+    }
+    private async void cancelProductDetailsButton_Click(object sender, EventArgs e)
+    {
+        productDetailsTabPage.Hide();
+        ProductTabControl.TabPages.Remove(productDetailsTabPage);
+    }
+    private async void editProductDetailsButton_Click(object sender, EventArgs e)
+    {
+        await EditProductDetails();
+    }
+    private async void addNewProductDetailsButton_Click(object sender, EventArgs e)
+    {
+        //Lage et NewProduct object
+        //_client.CreateProduct(newProduct);
+        //popup om sucessfully saved
+        await RefreshProducts();
+        addProductTabPage.Hide();
+        ProductTabControl.TabPages.Remove(addProductTabPage);
+    }
+    private async void CancelAddProductButton_Click(object sender, EventArgs e)
+    {
+        addProductTabPage.Hide();
+        ProductTabControl.TabPages.Remove(addProductTabPage);
+    }
+    #endregion
+
+
+    #region Methods
+    private async Task RefreshProducts()
+    {
+
+        ProductGridView.DataSource = null;
+        exceptionTextBox.Hide();
+        LoadingGif.Show();
+
+        try
+        {
+            _productListResponse = await _client.ListProduct();
+            ProductList = new SortableBindingList<GetProductResponse>(_productListResponse.Items);
+        }
+        catch (Exception ex)
+        {
+            //API error
+            exceptionTextBox.Text = $"Error: {ex.Message}";
+            exceptionTextBox.Show();
+        }
+
+        LoadingGif.Hide();
+
+    }
     //Tabs
     private async Task NewAddProductTab()
     {
@@ -225,6 +259,8 @@ public partial class ProductListForm : Form
         try
         {
             _productDetailResponse = await _client.GetProduct(productId);
+            _productTypeResponse = await _client.ListProductType();
+            _vendorResponse = await _client.ListVendor();
         }
         catch (Exception ex)
         {
@@ -254,6 +290,8 @@ public partial class ProductListForm : Form
 
         var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
         ProductTabControl.TabPages[indexOfDetails].Text = "Product details";
+
+        editProductDetailsButton.Visible = true;
         //Legg til readonly på alle felt
         //Fjern add knapp
 
@@ -262,28 +300,9 @@ public partial class ProductListForm : Form
     {
         var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
         ProductTabControl.TabPages[indexOfDetails].Text = "Edit product";
-
-        try
-        {
-            _productTypeResponse = await _client.ListProductType();
-            _vendorResponse = await _client.ListVendor();
-        }
-        catch (Exception ex)
-        {
-            //API error
-            exceptionTextBox.Text = $"Error: {ex.Message}";
-            exceptionTextBox.Show();
-        }
+        editProductDetailsButton.Visible = false;
         //Fjern readonly på alle felt
         //Legg til add knapp
     }
-
-    private async Task DeleteProduct(Guid ProductId)
-    {
-        await _client.DeleteProduct(ProductId);
-        //Successfully deleted popup
-        await RefreshProducts();
-    }
-
-
+    #endregion
 }
