@@ -338,10 +338,10 @@ public partial class ProductListForm : Form
         vendorWebsiteProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
 
         //type
-        var thisProductType = _productTypeResponse.Items.Where(x => x.ProductTypeId == _productDetailResponse.VendorId).FirstOrDefault();
-        productTypeIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
-        productTypeNameProductDetailsTextBox.Text = thisVendor.Name;
-        productTypeDescriptionProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+        var thisProductType = _productTypeResponse.Items.Where(x => x.ProductTypeId == _productDetailResponse.ProductTypeId).FirstOrDefault();
+        productTypeIdProductDetailsTextBox.Text = thisProductType.ProductTypeId.ToString();
+        productTypeNameProductDetailsTextBox.Text = thisProductType.Name;
+        productTypeDescriptionProductDetailsTextBox.Text = thisProductType.Description.ToString();
 
         ////Vendor props
         ////Product Type props
@@ -360,18 +360,21 @@ public partial class ProductListForm : Form
     private void vendorProductDetailsComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
         var vendorId = vendorProductDetailsComboBox.SelectedValue;
-        //var thisVendor = _vendorResponse.Items.Where(x => x.VendorId == _productDetailResponse.VendorId).FirstOrDefault();
-        //vendorIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
-        //vendorNameProductDetailsTextBox.Text = thisVendor.Name;
-        //vendorWebsiteProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+        var thisVendor = _vendorResponse.Items.Where(x => x.VendorId == _productDetailResponse.VendorId).FirstOrDefault();
+        vendorIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
+        vendorNameProductDetailsTextBox.Text = thisVendor.Name;
+        vendorWebsiteProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+        //vendorPropertiesProductDetailsGroupBox.Update();
     }
 
     private void productTypeProductDetailsComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
         var productTypeId = productTypeProductDetailsComboBox.SelectedValue;
-        //var thisProductType = _productTypeResponse.Items.Where(x => x.ProductTypeId == _productDetailResponse.VendorId).FirstOrDefault();
-        //productTypeIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
-        //productTypeNameProductDetailsTextBox.Text = thisVendor.Name;
-        //productTypeDescriptionProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+        var thisProductType = _productTypeResponse.Items.Where(x => x.ProductTypeId == _productDetailResponse.ProductTypeId).FirstOrDefault();
+        productTypeIdProductDetailsTextBox.Text = thisProductType.ProductTypeId.ToString();
+        productTypeNameProductDetailsTextBox.Text = thisProductType.Name;
+        productTypeDescriptionProductDetailsTextBox.Text = thisProductType.Description.ToString();
+        //productTypePropertiesProductDetailsGroupBox.Refresh();
+
     }
 }
