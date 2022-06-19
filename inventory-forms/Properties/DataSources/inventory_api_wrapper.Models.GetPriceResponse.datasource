@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="Products" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-  <TypeInfo>inventory_api_wrapper.Models.Products, inventory-api-wrapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+<GenericObjectDataSource DisplayName="GetPriceResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+  <TypeInfo>inventory_api_wrapper.Models.GetPriceResponse, inventory-api-wrapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

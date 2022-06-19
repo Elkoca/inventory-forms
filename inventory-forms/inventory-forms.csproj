@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DG.AdvancedDataGridView" Version="1.2.26803.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\inventory-api-wrapper\inventory-api-wrapper.csproj" />
   </ItemGroup>
 

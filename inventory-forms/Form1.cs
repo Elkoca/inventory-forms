@@ -14,9 +14,13 @@ public partial class Form1 : Form
     private InventoryApiWrapper _client;
     private List<Products> _products;
 
+    private GetProductListResponse _productListResponse;
 
-    private SortableBindingList<Products> _productList;
-    public SortableBindingList<Products> ProductList
+
+    //private SortableBindingList<Products> _productList;
+    //public SortableBindingList<Products> ProductList
+    private SortableBindingList<GetProductResponse> _productList;
+    public SortableBindingList<GetProductResponse> ProductList
     {
         get { return _productList; }
         set 
@@ -40,6 +44,8 @@ public partial class Form1 : Form
     {
         _client = new InventoryApiWrapper();
         await this.RefreshProducts();
+        var gridFrom = new AdvancedGrid(_products);
+        gridFrom.Show();
     }
 
     private async void ListProducts_Click(object sender, EventArgs e)
@@ -56,8 +62,11 @@ public partial class Form1 : Form
 
         try
         {
-            _products = await _client.ListProduct();
-            ProductList = new SortableBindingList<Products>(_products);
+            _productListResponse = await _client.ListProduct();
+            //_products = await _client.ListProduct();
+            //ProductList = new SortableBindingList<Products>(_products);
+
+            ProductList = new SortableBindingList<GetProductResponse>(_productListResponse.Items);
         }
         catch (Exception ex)
         {
@@ -73,24 +82,23 @@ public partial class Form1 : Form
     //Kan hende at disse kan være de samme
     private void searchButton_Click(object sender, EventArgs e)
     {
-        //Regex regex = new Regex();
-        List<Products> filteredProducts = _products.Where(x => 
-            Regex.IsMatch(x.Name, searchBox.Text.Trim(), RegexOptions.IgnoreCase) || 
-            Regex.IsMatch(x.Id.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase)
+        //Viker ikke som at denne er nødvendig, om jeg ikke skal ha med paging
+        List<GetProductResponse> filteredProducts = _productListResponse.Items.Where(x =>
+            Regex.IsMatch(x.Name.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase) ||
+            Regex.IsMatch(x.ArticleNo.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase)
         ).ToList();
 
-        ProductList = new SortableBindingList<Products>(filteredProducts);
+        ProductList = new SortableBindingList<GetProductResponse>(filteredProducts);
     }
 
     private void searchBox_TextChanged(object sender, EventArgs e)
     {
-        //Regex regex = new Regex();
-        List <Products> filteredProducts = _products.Where(x =>
-            Regex.IsMatch(x.Name, searchBox.Text.Trim(), RegexOptions.IgnoreCase) ||
-            Regex.IsMatch(x.Id.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase)
+        List<GetProductResponse> filteredProducts = _productListResponse.Items.Where(x =>
+            Regex.IsMatch(x.Name.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase) ||
+            Regex.IsMatch(x.ArticleNo.ToString(), searchBox.Text.Trim(), RegexOptions.IgnoreCase)
         ).ToList();
 
-        ProductList = new SortableBindingList<Products>(filteredProducts);
+        ProductList = new SortableBindingList<GetProductResponse>(filteredProducts);
     }
 
     private void productGridView_SortedChange(object sender, EventArgs e)

@@ -37,10 +37,12 @@ public class SortableBindingList<T> : BindingList<T>
 
             if (direction == ListSortDirection.Ascending)
             {
+                //API Kall
                 query = query.OrderBy(i => prop.GetValue(i));
             }
             else
             {
+                //API Kall
                 query = query.OrderByDescending(i => prop.GetValue(i));
             }
 
