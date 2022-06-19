@@ -31,7 +31,7 @@ namespace inventory_forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListForm));
             this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.nameDQataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +67,7 @@ namespace inventory_forms
             this.addNewVendorProductDetailsButton = new System.Windows.Forms.Button();
             this.productIdProductDetailsTextBox = new System.Windows.Forms.TextBox();
             this.vendorProductDetailsComboBox = new System.Windows.Forms.ComboBox();
+            this.getVendorResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIdProductDetailsLabel = new System.Windows.Forms.Label();
             this.addNewProductTypeProductDetailsButton = new System.Windows.Forms.Button();
             this.nameProductDetailsTextBox = new System.Windows.Forms.TextBox();
@@ -78,6 +79,7 @@ namespace inventory_forms
             this.productTypeProductDetailsLabel = new System.Windows.Forms.Label();
             this.descriptionProductDetailsLabel = new System.Windows.Forms.Label();
             this.productTypeProductDetailsComboBox = new System.Windows.Forms.ComboBox();
+            this.getProductTypeResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockProductDetailsLabel = new System.Windows.Forms.Label();
             this.currencyProductDetailsLabel = new System.Windows.Forms.Label();
             this.stockProductDetailsTextBox = new System.Windows.Forms.TextBox();
@@ -87,7 +89,7 @@ namespace inventory_forms
             this.barcodeProductDetailsTextBox = new System.Windows.Forms.TextBox();
             this.priceProductDetailsLabel = new System.Windows.Forms.Label();
             this.productTypePropertiesProductDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.productDescriptionProductDetailsTextBox = new System.Windows.Forms.TextBox();
+            this.productTypeDescriptionProductDetailsTextBox = new System.Windows.Forms.TextBox();
             this.productTypeNameProductDetailsTextBox = new System.Windows.Forms.TextBox();
             this.productTypeIdProductDetailsLabel = new System.Windows.Forms.Label();
             this.productTypeNameProductDetailsLabel = new System.Windows.Forms.Label();
@@ -115,6 +117,8 @@ namespace inventory_forms
             this.productsTabPage1.SuspendLayout();
             this.productDetailsTabPage.SuspendLayout();
             this.ProductDetailsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.getVendorResponseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getProductTypeResponseBindingSource)).BeginInit();
             this.productTypePropertiesProductDetailsGroupBox.SuspendLayout();
             this.vendorPropertiesProductDetailsGroupBox.SuspendLayout();
             this.addProductTabPage.SuspendLayout();
@@ -131,14 +135,14 @@ namespace inventory_forms
             this.ProductGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ProductGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDQataGridViewTextBoxColumn,
@@ -157,7 +161,7 @@ namespace inventory_forms
             this.ProductGridView.RowHeadersVisible = false;
             this.ProductGridView.RowTemplate.Height = 25;
             this.ProductGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductGridView.Size = new System.Drawing.Size(520, 405);
+            this.ProductGridView.Size = new System.Drawing.Size(520, 392);
             this.ProductGridView.TabIndex = 1;
             this.ProductGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellContentClick);
             this.ProductGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellDoubleClick);
@@ -247,7 +251,7 @@ namespace inventory_forms
             // 
             this.ListProducts.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ListProducts.AutoSize = true;
-            this.ListProducts.Location = new System.Drawing.Point(204, 444);
+            this.ListProducts.Location = new System.Drawing.Point(204, 431);
             this.ListProducts.Name = "ListProducts";
             this.ListProducts.Size = new System.Drawing.Size(105, 25);
             this.ListProducts.TabIndex = 0;
@@ -279,7 +283,7 @@ namespace inventory_forms
             // DeleteProductButton
             // 
             this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProductButton.Location = new System.Drawing.Point(362, 445);
+            this.DeleteProductButton.Location = new System.Drawing.Point(362, 432);
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(151, 23);
             this.DeleteProductButton.TabIndex = 4;
@@ -293,7 +297,7 @@ namespace inventory_forms
             this.LoadingGif.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LoadingGif.Image = ((System.Drawing.Image)(resources.GetObject("LoadingGif.Image")));
             this.LoadingGif.InitialImage = ((System.Drawing.Image)(resources.GetObject("LoadingGif.InitialImage")));
-            this.LoadingGif.Location = new System.Drawing.Point(206, 197);
+            this.LoadingGif.Location = new System.Drawing.Point(206, 191);
             this.LoadingGif.MaximumSize = new System.Drawing.Size(150, 124);
             this.LoadingGif.MinimumSize = new System.Drawing.Size(75, 62);
             this.LoadingGif.Name = "LoadingGif";
@@ -308,7 +312,7 @@ namespace inventory_forms
             this.exceptionTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.exceptionTextBox.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exceptionTextBox.ForeColor = System.Drawing.Color.Red;
-            this.exceptionTextBox.Location = new System.Drawing.Point(20, 197);
+            this.exceptionTextBox.Location = new System.Drawing.Point(20, 191);
             this.exceptionTextBox.MaximumSize = new System.Drawing.Size(476, 96);
             this.exceptionTextBox.MinimumSize = new System.Drawing.Size(400, 62);
             this.exceptionTextBox.Name = "exceptionTextBox";
@@ -328,7 +332,7 @@ namespace inventory_forms
             // NewProductButton
             // 
             this.NewProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewProductButton.Location = new System.Drawing.Point(3, 445);
+            this.NewProductButton.Location = new System.Drawing.Point(3, 432);
             this.NewProductButton.Name = "NewProductButton";
             this.NewProductButton.Size = new System.Drawing.Size(163, 23);
             this.NewProductButton.TabIndex = 8;
@@ -355,7 +359,7 @@ namespace inventory_forms
             this.productListPanel.Location = new System.Drawing.Point(3, 3);
             this.productListPanel.MinimumSize = new System.Drawing.Size(500, 200);
             this.productListPanel.Name = "productListPanel";
-            this.productListPanel.Size = new System.Drawing.Size(520, 475);
+            this.productListPanel.Size = new System.Drawing.Size(520, 462);
             this.productListPanel.TabIndex = 9;
             // 
             // label1
@@ -402,7 +406,7 @@ namespace inventory_forms
             this.productsTabPage1.Location = new System.Drawing.Point(4, 24);
             this.productsTabPage1.Name = "productsTabPage1";
             this.productsTabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.productsTabPage1.Size = new System.Drawing.Size(526, 481);
+            this.productsTabPage1.Size = new System.Drawing.Size(526, 468);
             this.productsTabPage1.TabIndex = 0;
             this.productsTabPage1.Text = "Stock list";
             // 
@@ -497,16 +501,27 @@ namespace inventory_forms
             // 
             this.productIdProductDetailsTextBox.Location = new System.Drawing.Point(6, 74);
             this.productIdProductDetailsTextBox.Name = "productIdProductDetailsTextBox";
+            this.productIdProductDetailsTextBox.ReadOnly = true;
             this.productIdProductDetailsTextBox.Size = new System.Drawing.Size(157, 23);
             this.productIdProductDetailsTextBox.TabIndex = 4;
             // 
             // vendorProductDetailsComboBox
             // 
+            this.vendorProductDetailsComboBox.DataSource = this.getVendorResponseBindingSource;
+            this.vendorProductDetailsComboBox.DisplayMember = "Name";
+            this.vendorProductDetailsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vendorProductDetailsComboBox.Enabled = false;
             this.vendorProductDetailsComboBox.FormattingEnabled = true;
             this.vendorProductDetailsComboBox.Location = new System.Drawing.Point(260, 207);
             this.vendorProductDetailsComboBox.Name = "vendorProductDetailsComboBox";
             this.vendorProductDetailsComboBox.Size = new System.Drawing.Size(157, 23);
             this.vendorProductDetailsComboBox.TabIndex = 39;
+            this.vendorProductDetailsComboBox.ValueMember = "vendorId";
+            this.vendorProductDetailsComboBox.SelectedIndexChanged += new System.EventHandler(this.vendorProductDetailsComboBox_SelectedIndexChanged);
+            // 
+            // getVendorResponseBindingSource
+            // 
+            this.getVendorResponseBindingSource.DataSource = typeof(inventory_api_wrapper.Models.GetVendorResponse);
             // 
             // productIdProductDetailsLabel
             // 
@@ -530,6 +545,7 @@ namespace inventory_forms
             // 
             this.nameProductDetailsTextBox.Location = new System.Drawing.Point(202, 74);
             this.nameProductDetailsTextBox.Name = "nameProductDetailsTextBox";
+            this.nameProductDetailsTextBox.ReadOnly = true;
             this.nameProductDetailsTextBox.Size = new System.Drawing.Size(157, 23);
             this.nameProductDetailsTextBox.TabIndex = 5;
             // 
@@ -555,6 +571,7 @@ namespace inventory_forms
             // 
             this.titleProductDetailsTextBox.Location = new System.Drawing.Point(202, 118);
             this.titleProductDetailsTextBox.Name = "titleProductDetailsTextBox";
+            this.titleProductDetailsTextBox.ReadOnly = true;
             this.titleProductDetailsTextBox.Size = new System.Drawing.Size(312, 23);
             this.titleProductDetailsTextBox.TabIndex = 8;
             // 
@@ -572,6 +589,7 @@ namespace inventory_forms
             this.descriptionProductDetailsTextBox.Location = new System.Drawing.Point(202, 162);
             this.descriptionProductDetailsTextBox.Multiline = true;
             this.descriptionProductDetailsTextBox.Name = "descriptionProductDetailsTextBox";
+            this.descriptionProductDetailsTextBox.ReadOnly = true;
             this.descriptionProductDetailsTextBox.Size = new System.Drawing.Size(312, 23);
             this.descriptionProductDetailsTextBox.TabIndex = 9;
             // 
@@ -595,11 +613,21 @@ namespace inventory_forms
             // 
             // productTypeProductDetailsComboBox
             // 
+            this.productTypeProductDetailsComboBox.DataSource = this.getProductTypeResponseBindingSource;
+            this.productTypeProductDetailsComboBox.DisplayMember = "Name";
+            this.productTypeProductDetailsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.productTypeProductDetailsComboBox.Enabled = false;
             this.productTypeProductDetailsComboBox.FormattingEnabled = true;
             this.productTypeProductDetailsComboBox.Location = new System.Drawing.Point(6, 206);
             this.productTypeProductDetailsComboBox.Name = "productTypeProductDetailsComboBox";
             this.productTypeProductDetailsComboBox.Size = new System.Drawing.Size(157, 23);
             this.productTypeProductDetailsComboBox.TabIndex = 19;
+            this.productTypeProductDetailsComboBox.ValueMember = "productTypeId";
+            this.productTypeProductDetailsComboBox.SelectedIndexChanged += new System.EventHandler(this.productTypeProductDetailsComboBox_SelectedIndexChanged);
+            // 
+            // getProductTypeResponseBindingSource
+            // 
+            this.getProductTypeResponseBindingSource.DataSource = typeof(inventory_api_wrapper.Models.GetProductTypeResponse);
             // 
             // stockProductDetailsLabel
             // 
@@ -623,6 +651,7 @@ namespace inventory_forms
             // 
             this.stockProductDetailsTextBox.Location = new System.Drawing.Point(6, 162);
             this.stockProductDetailsTextBox.Name = "stockProductDetailsTextBox";
+            this.stockProductDetailsTextBox.ReadOnly = true;
             this.stockProductDetailsTextBox.Size = new System.Drawing.Size(157, 23);
             this.stockProductDetailsTextBox.TabIndex = 12;
             // 
@@ -630,6 +659,7 @@ namespace inventory_forms
             // 
             this.priceProductDetailsTextBox.Location = new System.Drawing.Point(438, 74);
             this.priceProductDetailsTextBox.Name = "priceProductDetailsTextBox";
+            this.priceProductDetailsTextBox.ReadOnly = true;
             this.priceProductDetailsTextBox.Size = new System.Drawing.Size(76, 23);
             this.priceProductDetailsTextBox.TabIndex = 17;
             // 
@@ -646,6 +676,7 @@ namespace inventory_forms
             // 
             this.currencyProductDetailsTextBox.Location = new System.Drawing.Point(365, 74);
             this.currencyProductDetailsTextBox.Name = "currencyProductDetailsTextBox";
+            this.currencyProductDetailsTextBox.ReadOnly = true;
             this.currencyProductDetailsTextBox.Size = new System.Drawing.Size(67, 23);
             this.currencyProductDetailsTextBox.TabIndex = 16;
             // 
@@ -653,6 +684,7 @@ namespace inventory_forms
             // 
             this.barcodeProductDetailsTextBox.Location = new System.Drawing.Point(6, 118);
             this.barcodeProductDetailsTextBox.Name = "barcodeProductDetailsTextBox";
+            this.barcodeProductDetailsTextBox.ReadOnly = true;
             this.barcodeProductDetailsTextBox.Size = new System.Drawing.Size(157, 23);
             this.barcodeProductDetailsTextBox.TabIndex = 14;
             // 
@@ -669,7 +701,7 @@ namespace inventory_forms
             // 
             this.productTypePropertiesProductDetailsGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.productTypePropertiesProductDetailsGroupBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.productTypePropertiesProductDetailsGroupBox.Controls.Add(this.productDescriptionProductDetailsTextBox);
+            this.productTypePropertiesProductDetailsGroupBox.Controls.Add(this.productTypeDescriptionProductDetailsTextBox);
             this.productTypePropertiesProductDetailsGroupBox.Controls.Add(this.productTypeNameProductDetailsTextBox);
             this.productTypePropertiesProductDetailsGroupBox.Controls.Add(this.productTypeIdProductDetailsLabel);
             this.productTypePropertiesProductDetailsGroupBox.Controls.Add(this.productTypeNameProductDetailsLabel);
@@ -683,17 +715,19 @@ namespace inventory_forms
             this.productTypePropertiesProductDetailsGroupBox.TabStop = false;
             this.productTypePropertiesProductDetailsGroupBox.Text = "Product Type Properties";
             // 
-            // productDescriptionProductDetailsTextBox
+            // productTypeDescriptionProductDetailsTextBox
             // 
-            this.productDescriptionProductDetailsTextBox.Location = new System.Drawing.Point(6, 134);
-            this.productDescriptionProductDetailsTextBox.Name = "productDescriptionProductDetailsTextBox";
-            this.productDescriptionProductDetailsTextBox.Size = new System.Drawing.Size(230, 23);
-            this.productDescriptionProductDetailsTextBox.TabIndex = 26;
+            this.productTypeDescriptionProductDetailsTextBox.Location = new System.Drawing.Point(6, 134);
+            this.productTypeDescriptionProductDetailsTextBox.Name = "productTypeDescriptionProductDetailsTextBox";
+            this.productTypeDescriptionProductDetailsTextBox.ReadOnly = true;
+            this.productTypeDescriptionProductDetailsTextBox.Size = new System.Drawing.Size(230, 23);
+            this.productTypeDescriptionProductDetailsTextBox.TabIndex = 26;
             // 
             // productTypeNameProductDetailsTextBox
             // 
             this.productTypeNameProductDetailsTextBox.Location = new System.Drawing.Point(6, 90);
             this.productTypeNameProductDetailsTextBox.Name = "productTypeNameProductDetailsTextBox";
+            this.productTypeNameProductDetailsTextBox.ReadOnly = true;
             this.productTypeNameProductDetailsTextBox.Size = new System.Drawing.Size(230, 23);
             this.productTypeNameProductDetailsTextBox.TabIndex = 23;
             // 
@@ -719,6 +753,7 @@ namespace inventory_forms
             // 
             this.productTypeIdProductDetailsTextBox.Location = new System.Drawing.Point(6, 46);
             this.productTypeIdProductDetailsTextBox.Name = "productTypeIdProductDetailsTextBox";
+            this.productTypeIdProductDetailsTextBox.ReadOnly = true;
             this.productTypeIdProductDetailsTextBox.Size = new System.Drawing.Size(230, 23);
             this.productTypeIdProductDetailsTextBox.TabIndex = 32;
             // 
@@ -753,6 +788,7 @@ namespace inventory_forms
             // 
             this.vendorNameProductDetailsTextBox.Location = new System.Drawing.Point(6, 88);
             this.vendorNameProductDetailsTextBox.Name = "vendorNameProductDetailsTextBox";
+            this.vendorNameProductDetailsTextBox.ReadOnly = true;
             this.vendorNameProductDetailsTextBox.Size = new System.Drawing.Size(233, 23);
             this.vendorNameProductDetailsTextBox.TabIndex = 27;
             // 
@@ -769,6 +805,7 @@ namespace inventory_forms
             // 
             this.vendorWebsiteProductDetailsTextBox.Location = new System.Drawing.Point(6, 134);
             this.vendorWebsiteProductDetailsTextBox.Name = "vendorWebsiteProductDetailsTextBox";
+            this.vendorWebsiteProductDetailsTextBox.ReadOnly = true;
             this.vendorWebsiteProductDetailsTextBox.Size = new System.Drawing.Size(233, 23);
             this.vendorWebsiteProductDetailsTextBox.TabIndex = 28;
             // 
@@ -794,6 +831,7 @@ namespace inventory_forms
             // 
             this.vendorIdProductDetailsTextBox.Location = new System.Drawing.Point(6, 44);
             this.vendorIdProductDetailsTextBox.Name = "vendorIdProductDetailsTextBox";
+            this.vendorIdProductDetailsTextBox.ReadOnly = true;
             this.vendorIdProductDetailsTextBox.Size = new System.Drawing.Size(233, 23);
             this.vendorIdProductDetailsTextBox.TabIndex = 31;
             // 
@@ -804,7 +842,7 @@ namespace inventory_forms
             this.addProductTabPage.Location = new System.Drawing.Point(4, 24);
             this.addProductTabPage.Name = "addProductTabPage";
             this.addProductTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.addProductTabPage.Size = new System.Drawing.Size(526, 481);
+            this.addProductTabPage.Size = new System.Drawing.Size(526, 468);
             this.addProductTabPage.TabIndex = 2;
             this.addProductTabPage.Text = "Add Product";
             // 
@@ -858,6 +896,8 @@ namespace inventory_forms
             this.productDetailsTabPage.ResumeLayout(false);
             this.ProductDetailsGroupBox.ResumeLayout(false);
             this.ProductDetailsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.getVendorResponseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getProductTypeResponseBindingSource)).EndInit();
             this.productTypePropertiesProductDetailsGroupBox.ResumeLayout(false);
             this.productTypePropertiesProductDetailsGroupBox.PerformLayout();
             this.vendorPropertiesProductDetailsGroupBox.ResumeLayout(false);
@@ -921,7 +961,7 @@ namespace inventory_forms
         private Label vendorNameProductDetailsLabel;
         private TextBox vendorWebsiteProductDetailsTextBox;
         private TextBox vendorNameProductDetailsTextBox;
-        private TextBox productDescriptionProductDetailsTextBox;
+        private TextBox productTypeDescriptionProductDetailsTextBox;
         private Label productTypeDescriptionProductDetailsLabel;
         private Label productTypeNameProductDetailsLabel;
         private TextBox productTypeNameProductDetailsTextBox;
@@ -940,5 +980,7 @@ namespace inventory_forms
         private Button addNewVendorProductDetailsButton;
         private ComboBox vendorProductDetailsComboBox;
         private Button addNewProductTypeProductDetailsButton;
+        private BindingSource getVendorResponseBindingSource;
+        private BindingSource getProductTypeResponseBindingSource;
     }
 }

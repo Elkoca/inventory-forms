@@ -255,27 +255,8 @@ public partial class ProductListForm : Form
     // Gjelder også for change product (Edit button på sida)
     private async Task NewProductDetailAddProductTab(Guid productId)
     {
-
-        try
-        {
-            _productDetailResponse = await _client.GetProduct(productId);
-            _productTypeResponse = await _client.ListProductType();
-            _vendorResponse = await _client.ListVendor();
-        }
-        catch (Exception ex)
-        {
-            //API error
-            exceptionTextBox.Text = $"Error: {ex.Message}";
-            exceptionTextBox.Show();
-        }
-        finally
-        {
-            if (_productDetailResponse == null)
-            {
-                throw new Exception($"Something went wrong getting product details for: {productId}");
-            }
-        }
-
+        await RemoveProductDetails();
+        await SetProductDetails(productId);
 
         if (ProductTabControl.TabPages.Contains(productDetailsTabPage))
         {
@@ -304,5 +285,93 @@ public partial class ProductListForm : Form
         //Fjern readonly på alle felt
         //Legg til add knapp
     }
+
+    private async Task SetProductDetails(Guid productId, bool edit = false)
+    {
+        try
+        {
+            _productDetailResponse = await _client.GetProduct(productId);
+            _productTypeResponse = await _client.ListProductType();
+            _vendorResponse = await _client.ListVendor();
+        }
+        catch (Exception ex)
+        {
+            //API error
+            exceptionTextBox.Text = $"Error: {ex.Message}";
+            exceptionTextBox.Show();
+        }
+        finally
+        {
+            if (_productDetailResponse == null)
+            {
+                throw new Exception($"Something went wrong getting product details for: {productId}");
+            }
+        }
+
+
+        //GetProductResponse _productDetailResponse
+        //GetProductTypeListResponse _productTypeResponse
+        //GetVendorListResponse _vendorResponse
+        // => TextBox
+
+        //Product Properties
+        productIdProductDetailsTextBox.Text = _productDetailResponse.ProductId.ToString();
+        nameProductDetailsTextBox.Text = _productDetailResponse.Name;
+        currencyProductDetailsTextBox.Text = _productDetailResponse.Price.Code;
+        priceProductDetailsTextBox.Text = _productDetailResponse.Price.Amount.ToString();
+        barcodeProductDetailsTextBox.Text = _productDetailResponse.ArticleNo.ToString();
+        titleProductDetailsTextBox.Text = _productDetailResponse.Title;
+        stockProductDetailsTextBox.Text = _productDetailResponse.Stock.ToString();
+        descriptionProductDetailsTextBox.Text = _productDetailResponse.Description;
+
+        //vendor and type Id
+        productTypeProductDetailsComboBox.DataSource = _productTypeResponse.Items;
+        vendorProductDetailsComboBox.DataSource = _vendorResponse.Items;
+
+        productTypeProductDetailsComboBox.SelectedItem = _productDetailResponse.ProductTypeId;
+        vendorProductDetailsComboBox.SelectedItem = _productDetailResponse.VendorId;
+
+        //vendor
+        var thisVendor = _vendorResponse.Items.Where(x => x.VendorId == _productDetailResponse.VendorId).FirstOrDefault();
+        vendorIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
+        vendorNameProductDetailsTextBox.Text = thisVendor.Name;
+        vendorWebsiteProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+
+        //type
+        var thisProductType = _productTypeResponse.Items.Where(x => x.ProductTypeId == _productDetailResponse.VendorId).FirstOrDefault();
+        productTypeIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
+        productTypeNameProductDetailsTextBox.Text = thisVendor.Name;
+        productTypeDescriptionProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+
+        ////Vendor props
+        ////Product Type props
+        //productIdProductDetailsTextBox;
+    }
+    private async Task RemoveProductDetails()
+    {
+
+    }
+    private async Task<GetProductResponse> GetProductDetails()
+    {
+        return _productDetailResponse;
+    }
     #endregion
+
+    private void vendorProductDetailsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var vendorId = vendorProductDetailsComboBox.SelectedValue;
+        //var thisVendor = _vendorResponse.Items.Where(x => x.VendorId == _productDetailResponse.VendorId).FirstOrDefault();
+        //vendorIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
+        //vendorNameProductDetailsTextBox.Text = thisVendor.Name;
+        //vendorWebsiteProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+    }
+
+    private void productTypeProductDetailsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var productTypeId = productTypeProductDetailsComboBox.SelectedValue;
+        //var thisProductType = _productTypeResponse.Items.Where(x => x.ProductTypeId == _productDetailResponse.VendorId).FirstOrDefault();
+        //productTypeIdProductDetailsTextBox.Text = thisVendor.VendorId.ToString();
+        //productTypeNameProductDetailsTextBox.Text = thisVendor.Name;
+        //productTypeDescriptionProductDetailsTextBox.Text = thisVendor.WebSite.ToString();
+    }
 }
