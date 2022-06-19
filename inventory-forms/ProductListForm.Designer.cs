@@ -61,6 +61,7 @@ namespace inventory_forms
             this.productsTabPage1 = new System.Windows.Forms.TabPage();
             this.productDetailsTabPage = new System.Windows.Forms.TabPage();
             this.addProductTabPage = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductResponseBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -70,6 +71,7 @@ namespace inventory_forms
             this.productListPanel.SuspendLayout();
             this.ProductTabControl.SuspendLayout();
             this.productsTabPage1.SuspendLayout();
+            this.addProductTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProductGridView
@@ -369,12 +371,23 @@ namespace inventory_forms
             // 
             // addProductTabPage
             // 
+            this.addProductTabPage.Controls.Add(this.checkBox1);
             this.addProductTabPage.Location = new System.Drawing.Point(4, 24);
             this.addProductTabPage.Name = "addProductTabPage";
             this.addProductTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.addProductTabPage.Size = new System.Drawing.Size(611, 413);
             this.addProductTabPage.TabIndex = 2;
             this.addProductTabPage.Text = "Add Product";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(214, 147);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(83, 19);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // ProductListForm
             // 
@@ -396,6 +409,8 @@ namespace inventory_forms
             this.productListPanel.PerformLayout();
             this.ProductTabControl.ResumeLayout(false);
             this.productsTabPage1.ResumeLayout(false);
+            this.addProductTabPage.ResumeLayout(false);
+            this.addProductTabPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -431,5 +446,6 @@ namespace inventory_forms
         private TabPage productsTabPage1;
         private TabPage productDetailsTabPage;
         private TabPage addProductTabPage;
+        private CheckBox checkBox1;
     }
 }

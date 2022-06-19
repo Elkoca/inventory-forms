@@ -10,15 +10,19 @@ public partial class ProductListForm : Form
 {
     private DataGridViewColumn? _sortColumn;
     private ListSortDirection? _sortOrder;
-
+    
     private InventoryApiWrapper _client;
-    private List<Products> _products;
-
+    
     private GetProductListResponse _productListResponse;
+    
+    //DataSettingOnDemand
+    private GetProductResponse _productDetailResponse;
+    private GetProductTypeListResponse _productTypeResponse;
+    private GetVendorListResponse _vendorResponse;
+    
+    //public GetProductTypeListResponse ProductTypeList;
+    //public GetVendorListResponse VendorList;
 
-
-    //private SortableBindingList<Products> _productList;
-    //public SortableBindingList<Products> ProductList
     private SortableBindingList<GetProductResponse> _productList;
     public SortableBindingList<GetProductResponse> ProductList
     {
@@ -43,6 +47,14 @@ public partial class ProductListForm : Form
 
     private async void Form1_Load(object sender, EventArgs e)
     {
+        //Hiding and removing unused tabs
+        addProductTabPage.Hide();
+        productDetailsTabPage.Hide();
+        ProductTabControl.TabPages.Remove(addProductTabPage);
+        ProductTabControl.TabPages.Remove(productDetailsTabPage);
+
+
+        //Getting data
         _client = new InventoryApiWrapper();
         await this.RefreshProducts();
 
@@ -73,16 +85,6 @@ public partial class ProductListForm : Form
             exceptionTextBox.Text = $"Error: {ex.Message}";
             exceptionTextBox.Show();
         }
-
-        //add button
-        //DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
-        //uninstallButtonColumn.Name = "actionButtonDataGridViewTextBoxColumn";
-        //uninstallButtonColumn.HeaderText = "Details";
-        //int columnIndex = 6;
-        //if (ProductGridView.Columns["actionButtonDataGridViewTextBoxColumn"] == null)
-        //{
-        //    ProductGridView.Columns.Insert(columnIndex, uninstallButtonColumn);
-        //}
 
         LoadingGif.Hide();
 
@@ -169,13 +171,14 @@ public partial class ProductListForm : Form
 
     private async void NewProductButton_Click(object sender, EventArgs e)
     {
-        //Open Nytt produkt vindu
-        //addProductTabPage.ena;
+        NewAddProductTab();
     }
 
     private async void DeleteProductButton_Click(object sender, EventArgs e)
     {
         //Legge til Are you sure you want to delete this row
+        addProductTabPage.Hide();
+        ProductTabControl.TabPages.Remove(addProductTabPage);
 
         var Selectedrow = ProductGridView.SelectedRows;
         if(Selectedrow.Count != 1)
@@ -197,6 +200,94 @@ public partial class ProductListForm : Form
     }
 
 
+    //Tabs
+    private async void NewAddProductTab()
+    {
+        //Open Nytt produkt vindu
+        //Her må jeg også ha en logikk som resetter Verdiene i addPorudctTabPage 
+        if (ProductTabControl.TabPages.Contains(addProductTabPage))
+        {
+            //Denne bør kanskje ikke resette verdiene, om man klarer å trykke feil, men da bør jeg ha 
+            ProductTabControl.SelectedTab = addProductTabPage;
+        }
+        else
+        {
+            addProductTabPage.Show();
+            ProductTabControl.TabPages.Add(addProductTabPage);
+        }
+    }
+    private async void NewChangeProductTab()
+    {
+        //Open Nytt produkt vindu
+        //Her må jeg også ha en logikk som resetter Verdiene i addPorudctTabPage 
+        if (ProductTabControl.TabPages.Contains(addProductTabPage))
+        {
+            //Denne bør kanskje ikke resette verdiene, om man klarer å trykke feil, men da bør jeg ha 
+            ProductTabControl.SelectedTab = addProductTabPage;
+        }
+        else
+        {
+            addProductTabPage.Show();
+            ProductTabControl.TabPages.Add(addProductTabPage);
+        }
+    }
+    // Gjelder også for change product (Edit button på sida)
+    private async void NewProductDetailAddProductTab(Guid productId)
+    {
+        var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
+        ProductTabControl.TabPages[indexOfDetails].Text = "Product details";
+        //Legg til readonly på alle felt
+        //Fjern add knapp
+        try
+        {
+            _productDetailResponse = await _client.GetProduct(productId);
+        }
+        catch (Exception ex)
+        {
+            //API error
+            exceptionTextBox.Text = $"Error: {ex.Message}";
+            exceptionTextBox.Show();
+        }
+
+
+        if (ProductTabControl.TabPages.Contains(productDetailsTabPage))
+        {
+
+            ProductTabControl.SelectedTab = productDetailsTabPage;
+            if(_productDetailResponse != null)
+            {
+                throw new Exception($"Something went wrong getting product details for: {productId}");
+            }
+
+
+        }
+        else
+        {
+
+            addProductTabPage.Show();
+            ProductTabControl.TabPages.Add(productDetailsTabPage);
+        }
+
+    }
+    private async void EditProductDetails()
+    {
+        var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
+        ProductTabControl.TabPages[indexOfDetails].Text = "Edit product";
+
+        try
+        {
+            //_productTypeResponse = await _client.ListProductTypes();
+            //_vendorResponse = await _client.ListVendor();
+        }
+        catch (Exception ex)
+        {
+            //API error
+            exceptionTextBox.Text = $"Error: {ex.Message}";
+            exceptionTextBox.Show();
+        }
+        //Fjern readonly på alle felt
+        //Legg til add knapp
+    }
 
 
 
