@@ -155,6 +155,11 @@ public partial class ProductListForm : Form
             if (Convert.ToInt32(Myrow.Cells[4].Value) == 0) 
             {
                 Myrow.DefaultCellStyle.BackColor = Color.Red;
+                Myrow.Cells["availableGridViewTextBoxColumn"].Value = "False";
+            }
+            else
+            {
+                Myrow.Cells["availableGridViewTextBoxColumn"].Value = "True";
             }
             //Setter tekst på knappene
             Myrow.Cells["editProductButton"].Value = "Details";
