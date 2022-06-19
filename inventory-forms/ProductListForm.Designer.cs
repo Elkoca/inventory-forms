@@ -31,7 +31,7 @@ namespace inventory_forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListForm));
             this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.nameDQataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,12 @@ namespace inventory_forms
             this.productsTabPage1 = new System.Windows.Forms.TabPage();
             this.productDetailsTabPage = new System.Windows.Forms.TabPage();
             this.addProductTabPage = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.editProductDetailsButton = new System.Windows.Forms.Button();
+            this.cancelProductDetailsButton = new System.Windows.Forms.Button();
+            this.saveProductDetailsButton = new System.Windows.Forms.Button();
+            this.CancelAddProductButton = new System.Windows.Forms.Button();
+            this.addNewProductDetailsButton = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductResponseBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -71,6 +76,7 @@ namespace inventory_forms
             this.productListPanel.SuspendLayout();
             this.ProductTabControl.SuspendLayout();
             this.productsTabPage1.SuspendLayout();
+            this.productDetailsTabPage.SuspendLayout();
             this.addProductTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,14 +91,14 @@ namespace inventory_forms
             this.ProductGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ProductGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDQataGridViewTextBoxColumn,
@@ -347,7 +353,7 @@ namespace inventory_forms
             this.ProductTabControl.Location = new System.Drawing.Point(0, 0);
             this.ProductTabControl.Name = "ProductTabControl";
             this.ProductTabControl.SelectedIndex = 0;
-            this.ProductTabControl.Size = new System.Drawing.Size(619, 441);
+            this.ProductTabControl.Size = new System.Drawing.Size(707, 518);
             this.ProductTabControl.TabIndex = 10;
             // 
             // productsTabPage1
@@ -362,16 +368,20 @@ namespace inventory_forms
             // 
             // productDetailsTabPage
             // 
+            this.productDetailsTabPage.Controls.Add(this.saveProductDetailsButton);
+            this.productDetailsTabPage.Controls.Add(this.cancelProductDetailsButton);
+            this.productDetailsTabPage.Controls.Add(this.editProductDetailsButton);
             this.productDetailsTabPage.Location = new System.Drawing.Point(4, 24);
             this.productDetailsTabPage.Name = "productDetailsTabPage";
             this.productDetailsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.productDetailsTabPage.Size = new System.Drawing.Size(611, 413);
+            this.productDetailsTabPage.Size = new System.Drawing.Size(699, 490);
             this.productDetailsTabPage.TabIndex = 1;
             this.productDetailsTabPage.Text = "Product details";
             // 
             // addProductTabPage
             // 
-            this.addProductTabPage.Controls.Add(this.checkBox1);
+            this.addProductTabPage.Controls.Add(this.addNewProductDetailsButton);
+            this.addProductTabPage.Controls.Add(this.CancelAddProductButton);
             this.addProductTabPage.Location = new System.Drawing.Point(4, 24);
             this.addProductTabPage.Name = "addProductTabPage";
             this.addProductTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -379,21 +389,66 @@ namespace inventory_forms
             this.addProductTabPage.TabIndex = 2;
             this.addProductTabPage.Text = "Add Product";
             // 
-            // checkBox1
+            // editProductDetailsButton
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(214, 147);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(83, 19);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.editProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editProductDetailsButton.Location = new System.Drawing.Point(618, 6);
+            this.editProductDetailsButton.Name = "editProductDetailsButton";
+            this.editProductDetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.editProductDetailsButton.TabIndex = 0;
+            this.editProductDetailsButton.Text = "Edit";
+            this.editProductDetailsButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelProductDetailsButton
+            // 
+            this.cancelProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cancelProductDetailsButton.Location = new System.Drawing.Point(6, 461);
+            this.cancelProductDetailsButton.Name = "cancelProductDetailsButton";
+            this.cancelProductDetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelProductDetailsButton.TabIndex = 1;
+            this.cancelProductDetailsButton.Text = "Cancel";
+            this.cancelProductDetailsButton.UseVisualStyleBackColor = true;
+            // 
+            // saveProductDetailsButton
+            // 
+            this.saveProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveProductDetailsButton.Location = new System.Drawing.Point(618, 461);
+            this.saveProductDetailsButton.Name = "saveProductDetailsButton";
+            this.saveProductDetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.saveProductDetailsButton.TabIndex = 2;
+            this.saveProductDetailsButton.Text = "Save";
+            this.saveProductDetailsButton.UseVisualStyleBackColor = true;
+            // 
+            // CancelAddProductButton
+            // 
+            this.CancelAddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CancelAddProductButton.Location = new System.Drawing.Point(6, 384);
+            this.CancelAddProductButton.Name = "CancelAddProductButton";
+            this.CancelAddProductButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelAddProductButton.TabIndex = 2;
+            this.CancelAddProductButton.Text = "Cancel";
+            this.CancelAddProductButton.UseVisualStyleBackColor = true;
+            // 
+            // addNewProductDetailsButton
+            // 
+            this.addNewProductDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addNewProductDetailsButton.Location = new System.Drawing.Point(530, 384);
+            this.addNewProductDetailsButton.Name = "addNewProductDetailsButton";
+            this.addNewProductDetailsButton.Size = new System.Drawing.Size(75, 23);
+            this.addNewProductDetailsButton.TabIndex = 3;
+            this.addNewProductDetailsButton.Text = "Add";
+            this.addNewProductDetailsButton.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // ProductListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 441);
+            this.ClientSize = new System.Drawing.Size(707, 518);
             this.Controls.Add(this.ProductTabControl);
             this.MinimumSize = new System.Drawing.Size(550, 300);
             this.Name = "ProductListForm";
@@ -409,8 +464,8 @@ namespace inventory_forms
             this.productListPanel.PerformLayout();
             this.ProductTabControl.ResumeLayout(false);
             this.productsTabPage1.ResumeLayout(false);
+            this.productDetailsTabPage.ResumeLayout(false);
             this.addProductTabPage.ResumeLayout(false);
-            this.addProductTabPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -419,7 +474,7 @@ namespace inventory_forms
 
         private Button ListProducts;
         private DataGridView ProductGridView;
-        private Button button1;
+        private Button CancelAddProductButton;
         private TextBox searchBox;
         private BindingSource productsBindingSource;
         private Button DeleteProductButton;
@@ -446,6 +501,10 @@ namespace inventory_forms
         private TabPage productsTabPage1;
         private TabPage productDetailsTabPage;
         private TabPage addProductTabPage;
-        private CheckBox checkBox1;
+        private Button saveProductDetailsButton;
+        private Button cancelProductDetailsButton;
+        private Button editProductDetailsButton;
+        private Button addNewProductDetailsButton;
+        private ContextMenuStrip contextMenuStrip1;
     }
 }
