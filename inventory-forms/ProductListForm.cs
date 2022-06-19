@@ -145,6 +145,7 @@ public partial class ProductListForm : Form
             {
                 Guid ProductId = selectedProduct.ProductId;
                 //Open edit window
+                NewProductDetailAddProductTab(ProductId);
             }
         }
     }
@@ -234,10 +235,7 @@ public partial class ProductListForm : Form
     // Gjelder også for change product (Edit button på sida)
     private async void NewProductDetailAddProductTab(Guid productId)
     {
-        var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
-        ProductTabControl.TabPages[indexOfDetails].Text = "Product details";
-        //Legg til readonly på alle felt
-        //Fjern add knapp
+
         try
         {
             _productDetailResponse = await _client.GetProduct(productId);
@@ -248,25 +246,30 @@ public partial class ProductListForm : Form
             exceptionTextBox.Text = $"Error: {ex.Message}";
             exceptionTextBox.Show();
         }
+        finally
+        {
+            if (_productDetailResponse == null)
+            {
+                throw new Exception($"Something went wrong getting product details for: {productId}");
+            }
+        }
 
 
         if (ProductTabControl.TabPages.Contains(productDetailsTabPage))
         {
-
             ProductTabControl.SelectedTab = productDetailsTabPage;
-            if(_productDetailResponse != null)
-            {
-                throw new Exception($"Something went wrong getting product details for: {productId}");
-            }
-
-
         }
         else
         {
-
             addProductTabPage.Show();
             ProductTabControl.TabPages.Add(productDetailsTabPage);
+            ProductTabControl.SelectedTab = productDetailsTabPage;
         }
+
+        var indexOfDetails = ProductTabControl.TabPages.IndexOf(productDetailsTabPage);
+        ProductTabControl.TabPages[indexOfDetails].Text = "Product details";
+        //Legg til readonly på alle felt
+        //Fjern add knapp
 
     }
     private async void EditProductDetails()
@@ -276,8 +279,8 @@ public partial class ProductListForm : Form
 
         try
         {
-            //_productTypeResponse = await _client.ListProductTypes();
-            //_vendorResponse = await _client.ListVendor();
+            _productTypeResponse = await _client.ListProductType();
+            _vendorResponse = await _client.ListVendor();
         }
         catch (Exception ex)
         {
